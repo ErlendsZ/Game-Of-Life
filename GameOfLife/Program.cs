@@ -19,7 +19,7 @@
         Console.WriteLine();
 
         Thread.Sleep(1000);
-        while (true)
+        while (!Console.KeyAvailable)
         {
             Console.WriteLine("Iteration " + (IterationCounter + 1));
             Console.WriteLine();
@@ -31,6 +31,8 @@
             Console.WriteLine();
             Thread.Sleep(1000);
             IterationCounter++;
+
+          
         }
      
 
@@ -71,13 +73,11 @@ class Rules
 
         int lenght = GameField.GetLength(0);
         int width = GameField.GetLength(1);
-        int [,] cordinatesArr = new int[,] { { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, // One Cell can have a maximum 8 neighbours cell cordinates {0.0}
-            {1, 0 }, { 1, -1}, {0, -1 }, { -1, -1} };
+        //int [,] cordinatesArr = new int[,] { { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, // One Cell can have a maximum 8 neighbours cell cordinates {0.0}
+        //    {1, 0 }, { 1, -1}, {0, -1 }, { -1, -1} };
 
-        //int[] cordinatesArr = new int[] {  -1, 0 ,  -1, 1 , 0, 1 ,  1, 1 , // One Cell can have a maximum 8 neighbours cell cordinates {0.0}
-        //    1, 0, 1, -1, 0, -1 ,  -1, -1 };
-
-
+        int[] cordinatesArrX = new int[] { -1, 0, 1 };
+       
 
         for (int i = 0; i < lenght; i++)
         {
@@ -98,21 +98,41 @@ class Rules
             {
                 int liveCells = 0;
 
-
-
-                foreach (var cordinate in cordinatesArr)
+                foreach (var cordinate in cordinatesArrX)
                 {
                     int x = cordinate + i;
-                    int y = cordinate + j;
+                    int y = j;
 
-                    if (x >= 0 && x < lenght && y >= 0 && y < width && GameField[x, y] == 1)
+                    if (x >= 0 && x < lenght && y >= 0 && y < width && x != y && GameField[x, y] == 1)
+                    {
+                        liveCells++;
+
+                    }
+                }
+                foreach (var cordinate in cordinatesArrX)
+                {
+                    int x = cordinate + i;
+                    int y = j-1;
+
+                    if (x >= 0 && x < lenght && y >= 0 && y < width && x != y && GameField[x, y] == 1)
+                    {
+                        liveCells++;
+
+                    }
+                }
+                foreach (var cordinate in cordinatesArrX)
+                {
+                    int x = cordinate + i;
+                    int y = j + 1;
+
+                    if (x >= 0 && x < lenght && y >= 0 && y < width && x != y && GameField[x, y] == 1)
                     {
                         liveCells++;
 
                     }
                 }
 
-                if (GameField[i,j] == 0 && liveCells > 3 )
+                if (GameField[i,j] == 0 && liveCells == 3 )
                 {
                     tempArr[i,j] = 1; 
 
@@ -141,7 +161,7 @@ class Rules
     }
 
 
-
+    
 }
 
 public class RandomCellGenerator
@@ -182,9 +202,9 @@ class GameFieldSize
 
     public int SelectWidth()
     {
-        Console.WriteLine("Enter Lenght");
-        int lenght = Convert.ToInt32(Console.ReadLine());
-        return lenght;
+        Console.WriteLine("Enter Width");
+        int width = Convert.ToInt32(Console.ReadLine());
+        return width;
 
     }
 
