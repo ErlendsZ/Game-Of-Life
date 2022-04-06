@@ -2,6 +2,8 @@
 {
     static public void Main(string[] args)
     {
+        int IterationCounter = 0;
+
         GameFieldSize gameFieldSize = new GameFieldSize();  // Set field size
         int lenght = gameFieldSize.SelectLenght();
         int width = gameFieldSize.SelectWidth();
@@ -16,10 +18,10 @@
         gameIterator.PrintArrayIteration(gameArr);
         Console.WriteLine();
 
-
-        for (int i = 0; i < 9; i++)
+        Thread.Sleep(1000);
+        while (true)
         {
-            Console.WriteLine("Iteration " + (i+1));
+            Console.WriteLine("Iteration " + (IterationCounter + 1));
             Console.WriteLine();
             Rules rules = new Rules();      // Change contents of field according to rules (1 itteration)
             rules.CellCalculation(gameArr);
@@ -27,6 +29,8 @@
 
             gameIterator.PrintArrayIteration(gameArr);  // Prints changed field
             Console.WriteLine();
+            Thread.Sleep(1000);
+            IterationCounter++;
         }
      
 
@@ -67,11 +71,11 @@ class Rules
 
         int lenght = GameField.GetLength(0);
         int width = GameField.GetLength(1);
-        //int [,] cordinatesArr = new int[,] { { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, // One Cell can have a maximum 8 neighbours cell cordinates {0.0}
-        //    {1, 0 }, { 1, -1}, {0, -1 }, { -1, -1} };
+        int [,] cordinatesArr = new int[,] { { -1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 }, // One Cell can have a maximum 8 neighbours cell cordinates {0.0}
+            {1, 0 }, { 1, -1}, {0, -1 }, { -1, -1} };
 
-        int[] cordinatesArr = new int[] {  -1, 0 ,  -1, 1 , 0, 1 ,  1, 1 , // One Cell can have a maximum 8 neighbours cell cordinates {0.0}
-            1, 0, 1, -1, 0, -1 ,  -1, -1 };
+        //int[] cordinatesArr = new int[] {  -1, 0 ,  -1, 1 , 0, 1 ,  1, 1 , // One Cell can have a maximum 8 neighbours cell cordinates {0.0}
+        //    1, 0, 1, -1, 0, -1 ,  -1, -1 };
 
 
 
@@ -96,11 +100,10 @@ class Rules
 
 
 
-                for (int k = 0; k < 16; k = k + 2)
+                foreach (var cordinate in cordinatesArr)
                 {
-                    int x = cordinatesArr[k];
-                    int y = cordinatesArr[k+1];
-  
+                    int x = cordinate + i;
+                    int y = cordinate + j;
 
                     if (x >= 0 && x < lenght && y >= 0 && y < width && GameField[x, y] == 1)
                     {
@@ -108,9 +111,8 @@ class Rules
 
                     }
                 }
-                
-    
-                if (GameField[i,j] == 0 && liveCells == 3)
+
+                if (GameField[i,j] == 0 && liveCells > 3 )
                 {
                     tempArr[i,j] = 1; 
 
