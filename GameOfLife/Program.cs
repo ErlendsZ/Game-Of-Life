@@ -69,7 +69,7 @@ class Rules
             for (int j = 0; j < GameField.GetLength(1); j++)
             {
                 GameField[i, j] = 2;
-            }
+            } 
         }
 
         return GameField;
