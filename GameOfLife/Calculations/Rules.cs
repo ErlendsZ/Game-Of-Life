@@ -15,7 +15,7 @@ namespace GameOfLife
             int[,] tempArr = (int[,])GameField.Clone();
             int lenght = GameField.GetLength(0);
             int width = GameField.GetLength(1);
-            int[] cordinatesArrX = new int[] { -1, 0, 1 };
+            
 
             for (int i = 0; i < lenght; i++)
             {
@@ -29,65 +29,56 @@ namespace GameOfLife
             }
 
 
-            for (int i = 0; i < lenght; i++)
+            for (int i = 0; i < lenght-1 ; i++)
             {
-
-                for (int j = 0; j < width; j++)
+                for (int j = 0; j < width-1 ; j++)
                 {
-                    int liveCells = 0;
 
-                    foreach (var cordinate in cordinatesArrX)   // Cordinates of each neighbour
+                    int liveCells = 0; // Livecell neighbour count for each cell
+
+                    for (int x = -1; x <= 1; x++)
                     {
-                        int x = cordinate + i;
-                        int y = j;
-
-                        if (x >= 0 && x < lenght && y >= 0 && y < width && x != y && GameField[x, y] == 1)
+                        for (int y = -1; y <= 1; y++)
                         {
-                            liveCells++;
+                            int cordinateX = i + x;
+                            int cordinateY = j + y;
+
+                            if(cordinateX >= 0 && cordinateY >= 0)
+                            {
+                               liveCells = liveCells + GameField[cordinateX, cordinateY];
+                            }
+
 
                         }
+
                     }
-                    foreach (var cordinate in cordinatesArrX)
-                    {
-                        int x = cordinate + i;
-                        int y = j - 1;
-
-                        if (x >= 0 && x < lenght && y >= 0 && y < width && GameField[x, y] == 1)
-                        {
-                            liveCells++;
-
-                        }
-                    }
-                    foreach (var cordinate in cordinatesArrX)
-                    {
-                        int x = cordinate + i;
-                        int y = j + 1;
-
-                        if (x >= 0 && x < lenght && y >= 0 && y < width && GameField[x, y] == 1)
-                        {
-                            liveCells++;
-
-                        }
-                    }
-                    //-----------------------------------------------------------------------------------------------------------
+                   
+                    liveCells = liveCells - GameField[i, j];
 
                     //Any live cell with fewer than two live neighbours dies, as if by underpopulation.
                     //Any live cell with two or three live neighbours lives on to the next generation.
                     //Any live cell with more than three live neighbours dies, as if by overpopulation.
                     //Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
-
-                    if (GameField[i, j] == 0 && liveCells == 3) // Calculate cell state according to game rules
+                    //1
+                    if (GameField[i, j] == 1 && liveCells < 2) // Calculate cell state according to game rules
+                    {
+                        tempArr[i, j] = 0;
+                    }
+                    //2
+                    else if (GameField[i, j] == 1 && (liveCells == 3 || liveCells == 2)) // Calculate cell state according to game rules
                     {
                         tempArr[i, j] = 1;
-
                     }
-                    else if (GameField[i, j] == 1)
+                    //3
+                    else if (GameField[i, j] == 1 && (liveCells > 3)) // Calculate cell state according to game rules
                     {
-                        if (liveCells == 2 || liveCells == 3)
-                        {
-                            tempArr[i, j] = 1;
-                        }
+                        tempArr[i, j] = 0;
+                    }
+                    //4
+                    else if (GameField[i, j] == 0 && (liveCells == 3)) // Calculate cell state according to game rules
+                    {
+                        tempArr[i, j] = 1;
                     }
 
 
@@ -109,7 +100,7 @@ namespace GameOfLife
         }
 
 
-
     }
-
 }
+
+

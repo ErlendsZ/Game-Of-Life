@@ -8,6 +8,7 @@ namespace GameOfLife
 {
     class InterationCount
     {
+        // NOT IMPLEMENTED
         public int SelectIterationCount()
         {
             Console.WriteLine("Enter Width");

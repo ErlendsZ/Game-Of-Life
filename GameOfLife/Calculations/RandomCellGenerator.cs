@@ -21,6 +21,19 @@ namespace GameOfLife
                 {
                     int number = rand.Next(0, 2); // Writes random number between 0-1
                     GameField[i, j] = number;
+
+                    //Glider Test
+
+                    //if (i == 1 && j == 1)
+                    //    GameField[i, j] = 1;
+                    //if (i == 1 && j == 3)
+                    //    GameField[i, j] = 1;
+                    //if (i == 2 && j == 2)
+                    //    GameField[i, j] = 1;
+                    //if (i == 2 && j == 3)
+                    //    GameField[i, j] = 1;
+                    //if (i == 3 && j == 2)
+                    //    GameField[i, j] = 1;
                 }
 
             }
