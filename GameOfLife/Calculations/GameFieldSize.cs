@@ -12,15 +12,44 @@ namespace GameOfLife
         public int SelectLenght()
         {
             Console.WriteLine("Enter Lenght");
-            int lenght = Convert.ToInt32(Console.ReadLine());
-            return lenght;
+
+            try
+            {
+               int lenght = Convert.ToInt32(Console.ReadLine());
+                if(lenght <= 0)
+                {
+                    Console.WriteLine("Invalid input try again!");
+                    return SelectLenght();
+                }
+               return lenght;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Invalid input try again!");
+                return SelectLenght();
+            }
+        
         }
 
         public int SelectWidth()
         {
             Console.WriteLine("Enter Width");
-            int width = Convert.ToInt32(Console.ReadLine());
-            return width;
+            try
+            {
+                int width = Convert.ToInt32(Console.ReadLine());
+                if (width <= 0)
+                {
+                    Console.WriteLine("Invalid input try again!");
+                    return SelectWidth();
+                }
+                return width;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Invalid input try again!");
+                return SelectWidth();
+            }
+        
 
         }
 
