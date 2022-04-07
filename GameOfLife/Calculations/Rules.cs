@@ -29,26 +29,48 @@ namespace GameOfLife
             }
 
 
-            for (int i = 0; i < lenght-1 ; i++)
+            for (int i = 0; i < lenght ; i++)
             {
-                for (int j = 0; j < width-1 ; j++)
+                for (int j = 0; j < width ; j++)
                 {
 
                     int liveCells = 0; // Livecell neighbour count for each cell
 
-                    for (int x = -1; x <= 1; x++)
+                    for (int x = -1; x < 2; x++)
                     {
-                        for (int y = -1; y <= 1; y++)
+                        for (int y = -1; y < 2; y++)
                         {
                             int cordinateX = i + x;
                             int cordinateY = j + y;
 
-                            if(cordinateX >= 0 && cordinateY >= 0)
-                            {
-                               liveCells = liveCells + GameField[cordinateX, cordinateY];
-                            }
+                                
+                                 
 
+                                    if (cordinateY > width-1)
+                                    {
+                                        cordinateY = 0;
+                                    }
 
+                                    if (cordinateY < 0)
+                                    {
+                                        cordinateY = width -1;
+
+                                    }
+
+                                    if (cordinateX > lenght - 1)
+                                    {
+                                        cordinateX = 0;
+                                    }
+
+                                    if (cordinateX < 0)
+                                    {
+                                        cordinateX = lenght - 1;
+
+                                    }
+
+                                    liveCells = liveCells + GameField[cordinateX, cordinateY];
+
+                              
                         }
 
                     }
@@ -66,17 +88,17 @@ namespace GameOfLife
                         tempArr[i, j] = 0;
                     }
                     //2
-                    else if (GameField[i, j] == 1 && (liveCells == 3 || liveCells == 2)) // Calculate cell state according to game rules
+                    else if (GameField[i, j] == 1 && (liveCells == 3 || liveCells == 2)) 
                     {
                         tempArr[i, j] = 1;
                     }
                     //3
-                    else if (GameField[i, j] == 1 && (liveCells > 3)) // Calculate cell state according to game rules
+                    else if (GameField[i, j] == 1 && (liveCells > 3))
                     {
                         tempArr[i, j] = 0;
                     }
                     //4
-                    else if (GameField[i, j] == 0 && (liveCells == 3)) // Calculate cell state according to game rules
+                    else if (GameField[i, j] == 0 && (liveCells == 3)) 
                     {
                         tempArr[i, j] = 1;
                     }
