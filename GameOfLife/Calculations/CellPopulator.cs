@@ -10,17 +10,16 @@ namespace GameOfLife
     public class CellPopulator
     {
        
-        public int[,] RandCells(int[,] gameField)
+        public int[,] RandomizeCells(int[,] gameField)
         {
-            Random rand = new Random();
+            Random randomizer = new Random();
 
             for (int i = 0; i < gameField.GetLength(0); i++)
             {
                 for (int j = 0; j < gameField.GetLength(1); j++)
                 {
-                    int number = rand.Next(0, 2); // Writes random number between 0-1
-                    gameField[i, j] = number;
-                    //GliderCreation(gameField);
+                    //gameField[i, j] = randomizer.Next(0, 2); 
+                    GliderCreation(gameField);
 
                 }
 

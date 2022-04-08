@@ -18,13 +18,13 @@ public class Program
         int width = Int32.Parse (gameFieldSize.SetFielDimensions(messageWidth, invalidInput));
 
         CellPopulator randomCellGenerator = new CellPopulator();        // Generates Cells in field
-        int [,] gameArr = randomCellGenerator.RandCells(new int[width, lenght]);
+        int [,] gameFieldArray = randomCellGenerator.RandomizeCells(new int[width, lenght]);
         Console.WriteLine();
 
         Console.WriteLine("Starting field");
         Console.WriteLine();
-        GameIterator gameIterator = new GameIterator();         // Prints Generated field 
-        gameIterator.PrintArrayIteration(gameArr);
+        DisplayGameField gameIterator = new DisplayGameField();         // Prints Generated field 
+        gameIterator.PrintArrayIteration(gameFieldArray);
         Console.WriteLine();
 
         Thread.Sleep(1000);
@@ -33,11 +33,11 @@ public class Program
         {
             Console.WriteLine("Iteration " + (IterationCounter + 1));
             Console.WriteLine();
-            Rules rules = new Rules();      // Change contents of field according to rules (1 itteration)
-            rules.CellCalculation(gameArr);
+            NextCellGeneration rules = new NextCellGeneration();      // Change contents of field according to rules (1 itteration)
+            rules.CellCalculation(gameFieldArray);
           
 
-            gameIterator.PrintArrayIteration(gameArr);  // Prints changed field
+            gameIterator.PrintArrayIteration(gameFieldArray);  // Prints changed field
             Console.WriteLine();
             Thread.Sleep(1000);
             IterationCounter++;

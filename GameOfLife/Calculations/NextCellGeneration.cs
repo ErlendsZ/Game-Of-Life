@@ -6,33 +6,30 @@ using System.Threading.Tasks;
 
 namespace GameOfLife
 {
-    class Rules
+    class NextCellGeneration
     {
         /// <summary>
-        ///  Cell calculation
+        ///  Calculates next generation of cells and
+        ///  updates game field acording to these 4 rules:
+        ///     Any live cell with fewer than two live neighbours dies, as if by underpopulation.
+        //      Any live cell with two or three live neighbours lives on to the next generation.
+        //      Any live cell with more than three live neighbours dies, as if by overpopulation.
+        //      Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
         /// </summary>
         /// <param name="gameField"></param>
         /// <returns></returns>
         public int[,] CellCalculation(int[,] gameField)
         {
-            int[,] tempArr = (int[,])gameField.Clone();
+           
             int lenght = gameField.GetLength(0);
             int width = gameField.GetLength(1);
-
-            for (int i = 0; i < lenght; i++)
-            {
-                for (int j = 0; j < width; j++)     // set copied same size array elements to 0
-                {
-                    tempArr[i, j] = 0;
-                }
-            }
-
+            int[,] tempArr = new int[lenght, width];
 
             for (int i = 0; i < lenght ; i++)
             {
                 for (int j = 0; j < width ; j++)
                 {
-                    int liveCells = 0; // Livecell neighbour count for each cell
+                    int liveNeighborCells = 0; 
 
                     for (int x = -1; x < 2; x++)
                     {
@@ -61,41 +58,37 @@ namespace GameOfLife
                                 cordinateY = width -1;
                             }
 
-                            liveCells = liveCells + gameField[cordinateX, cordinateY];
+                            liveNeighborCells = liveNeighborCells + gameField[cordinateX, cordinateY];
 
                         }
                     }
-                    liveCells = liveCells - gameField[i, j];
+                    liveNeighborCells = liveNeighborCells - gameField[i, j];
 
-                    //Any live cell with fewer than two live neighbours dies, as if by underpopulation.
-                    //Any live cell with two or three live neighbours lives on to the next generation.
-                    //Any live cell with more than three live neighbours dies, as if by overpopulation.
-                    //Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+                    // Calculate cell state according to game rules
                     //1
-                    if (gameField[i, j] == 1 && liveCells < 2) // Calculate cell state according to game rules
+                    if (gameField[i, j] == 1 && liveNeighborCells < 2) 
                     {
                         tempArr[i, j] = 0;
                     }
                     //2
-                    else if (gameField[i, j] == 1 && (liveCells == 3 || liveCells == 2)) 
+                    else if (gameField[i, j] == 1 && (liveNeighborCells == 3 || liveNeighborCells == 2)) 
                     {
                         tempArr[i, j] = 1;
                     }
                     //3
-                    else if (gameField[i, j] == 1 && (liveCells > 3))
+                    else if (gameField[i, j] == 1 && (liveNeighborCells > 3))
                     {
                         tempArr[i, j] = 0;
                     }
                     //4
-                    else if (gameField[i, j] == 0 && (liveCells == 3)) 
+                    else if (gameField[i, j] == 0 && (liveNeighborCells == 3)) 
                     {
                         tempArr[i, j] = 1;
                     }
                 }
             }
 
-
-            for (int i = 0; i < lenght; i++)    // Rewrite
+            for (int i = 0; i < lenght; i++)    
             {
                 for (int j = 0; j < width; j++)
                 {

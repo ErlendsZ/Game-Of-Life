@@ -17,6 +17,7 @@ namespace GameOfLife
         /// <returns></returns>
         public T SetFielDimensions<T>(T userMessage, T invalidInpuptMessage)
         {
+          
             Console.WriteLine(userMessage);
             string userInputDimension = Console.ReadLine();
 

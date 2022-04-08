@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameOfLife
 {
-    public class GameIterator
+    public class DisplayGameField
     {
         /// <summary>
         /// Iterating through field and displaying results
@@ -19,18 +19,16 @@ namespace GameOfLife
                 for (int j = 0; j < gameField.GetLength(1); j++)
                 {
                     Console.Write(gameField[i, j] + " ");
+                    
                 }
                 Console.WriteLine();
+              
             }
-            if (gameField.GetLength(0) < gameField.GetLength(1))
-            {
+                if (gameField.GetLength(0) <= gameField.GetLength(1))
+                    Console.SetCursorPosition(7 + gameField.GetLength(1), 7 + gameField.GetLength(0));
 
-                Console.SetCursorPosition(7 + gameField.GetLength(1), 7 + gameField.GetLength(0));
-            }
-            else
-            {
-                Console.SetCursorPosition(7 + gameField.GetLength(1), 7 + gameField.GetLength(0));
-            }
+                if (gameField.GetLength(0) > gameField.GetLength(1))     
+                    Console.SetCursorPosition(7 + gameField.GetLength(1), 7 + gameField.GetLength(0));
         }
     }
 }
