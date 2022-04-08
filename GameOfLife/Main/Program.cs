@@ -29,7 +29,7 @@ public class Program
 
         Thread.Sleep(1000);
 
-        while (!Console.KeyAvailable)
+        while (true)
         {
             Console.WriteLine("Iteration " + (IterationCounter + 1));
             Console.WriteLine();

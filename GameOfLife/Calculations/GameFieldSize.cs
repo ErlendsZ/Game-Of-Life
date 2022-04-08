@@ -9,13 +9,13 @@ namespace GameOfLife
     class GameFieldSize
     {
         /// <summary>
-        /// Field size set up  2D array
+        ///  Field size set up in 2D Array
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="userMessage"></param>
         /// <param name="invalidInpuptMessage"></param>
         /// <returns></returns>
-        public T SetFielDimensions<T>(T userMessage, T invalidInpuptMessage)
+
+        public string SetFielDimensions( string userMessage, string invalidInpuptMessage)
         {
           
             Console.WriteLine(userMessage);
@@ -25,7 +25,7 @@ namespace GameOfLife
 
             if (success && dimension > 1 && dimension < 1001)
             {
-                return (T)Convert.ChangeType(dimension, typeof(T));
+                return dimension.ToString();
             }
             else
             {

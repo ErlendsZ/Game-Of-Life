@@ -24,11 +24,11 @@ namespace GameOfLife
                 Console.WriteLine();
               
             }
-                if (gameField.GetLength(0) <= gameField.GetLength(1))
-                    Console.SetCursorPosition(7 + gameField.GetLength(1), 7 + gameField.GetLength(0));
+                //if (gameField.GetLength(0) <= gameField.GetLength(1))
+                //    Console.SetCursorPosition(7 + gameField.GetLength(1), 7 + gameField.GetLength(0));
 
-                if (gameField.GetLength(0) > gameField.GetLength(1))     
-                    Console.SetCursorPosition(7 + gameField.GetLength(1), 7 + gameField.GetLength(0));
+                //if (gameField.GetLength(0) > gameField.GetLength(1))     
+                //    Console.SetCursorPosition(7 + gameField.GetLength(1), 7 + gameField.GetLength(0));  
         }
     }
 }
