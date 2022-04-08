@@ -21,6 +21,16 @@ namespace GameOfLife
                 }
                 Console.WriteLine();
             }
+            if(GameField.GetLength(0) < GameField.GetLength(1))
+            {
+                Console.SetCursorPosition(7 + GameField.GetLength(1), 7 + GameField.GetLength(0));
+            }
+
+            else
+            {
+                Console.SetCursorPosition(7 + GameField.GetLength(1), 7 + GameField.GetLength(0));
+            }
+        
         }
 
     }

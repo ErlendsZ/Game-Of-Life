@@ -17,7 +17,7 @@ namespace GameOfLife
 
             bool success = Int32.TryParse(userInputDimension, out int dimension);
 
-            if (success && dimension > 1)
+            if (success && dimension > 1 && dimension < 1001)
             {
                 return (T)Convert.ChangeType(dimension, typeof(T));
             }
