@@ -12,45 +12,39 @@ namespace GameOfLife
         public int SelectLenght()
         {
             Console.WriteLine("Enter Lenght");
+            string lenghtInput = Console.ReadLine();
 
-            try
+            bool success = Int32.TryParse(lenghtInput, out int lenght);
+
+            if (success)
             {
-               int lenght = Convert.ToInt32(Console.ReadLine());
-                if(lenght <= 0)
-                {
-                    Console.WriteLine("Invalid input try again!");
-                    return SelectLenght();
-                }
-               return lenght;
+                return lenght;
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine("Invalid input try again!");
-                return SelectLenght();
+                Console.WriteLine("Invalid input, try again!");
             }
-        
+            return SelectLenght();
         }
 
         public int SelectWidth()
         {
             Console.WriteLine("Enter Width");
-            try
+            string widthInput = Console.ReadLine();
+
+            bool success =Int32.TryParse(widthInput, out int width);
+
+            if (success)
             {
-                int width = Convert.ToInt32(Console.ReadLine());
-                if (width <= 0)
-                {
-                    Console.WriteLine("Invalid input try again!");
-                    return SelectWidth();
-                }
                 return width;
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine("Invalid input try again!");
-                return SelectWidth();
+                Console.WriteLine("Invalid input, try again!");
             }
+            return SelectWidth();
         
-
+                
         }
 
     }
