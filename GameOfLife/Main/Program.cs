@@ -6,11 +6,16 @@ public class Program
 {
     static public void Main(string[] args)
     {
+
+        string messageWidth = "Enter Width";     // Set field size
+        string messageLenght = "Enter Lenght";
+        string invalidInput = "Invalid input, please try again!";
+      
         int IterationCounter = 0;
 
-        GameFieldSize gameFieldSize = new GameFieldSize();  // Set field size
-        int lenght = gameFieldSize.SelectLenght();
-        int width = gameFieldSize.SelectWidth();
+        GameFieldSize gameFieldSize = new GameFieldSize();  
+        int lenght = Int32.Parse ( gameFieldSize.SetFielDimensions(messageLenght,invalidInput) );
+        int width = Int32.Parse (gameFieldSize.SetFielDimensions(messageWidth, invalidInput));
 
         RandomCellGenerator randomCellGenerator = new RandomCellGenerator();        // Generates Cells in field
         int [,] gameArr = randomCellGenerator.RandCells(new int[width, lenght]);
