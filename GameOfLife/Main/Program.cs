@@ -17,7 +17,7 @@ public class Program
         int lenght = Int32.Parse ( gameFieldSize.SetFielDimensions(messageLenght,invalidInput) );
         int width = Int32.Parse (gameFieldSize.SetFielDimensions(messageWidth, invalidInput));
 
-        RandomCellGenerator randomCellGenerator = new RandomCellGenerator();        // Generates Cells in field
+        CellPopulator randomCellGenerator = new CellPopulator();        // Generates Cells in field
         int [,] gameArr = randomCellGenerator.RandCells(new int[width, lenght]);
         Console.WriteLine();
 
@@ -41,6 +41,7 @@ public class Program
             Console.WriteLine();
             Thread.Sleep(1000);
             IterationCounter++;
+
 
           
         }

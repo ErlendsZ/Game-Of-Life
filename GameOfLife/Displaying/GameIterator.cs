@@ -8,30 +8,29 @@ namespace GameOfLife
 {
     public class GameIterator
     {
-
-        //Iterating through field and displaying results
-        public void PrintArrayIteration(int[,] GameField)
+        /// <summary>
+        /// Iterating through field and displaying results
+        /// </summary>
+        /// <param name="gameField"></param>
+        public void PrintArrayIteration(int[,] gameField)
         {
-
-            for (int i = 0; i < GameField.GetLength(0); i++)
+            for (int i = 0; i < gameField.GetLength(0); i++)
             {
-                for (int j = 0; j < GameField.GetLength(1); j++)
+                for (int j = 0; j < gameField.GetLength(1); j++)
                 {
-                    Console.Write(GameField[i, j] + " ");
+                    Console.Write(gameField[i, j] + " ");
                 }
                 Console.WriteLine();
             }
-            if(GameField.GetLength(0) < GameField.GetLength(1))
+            if (gameField.GetLength(0) < gameField.GetLength(1))
             {
-                Console.SetCursorPosition(7 + GameField.GetLength(1), 7 + GameField.GetLength(0));
-            }
 
+                Console.SetCursorPosition(7 + gameField.GetLength(1), 7 + gameField.GetLength(0));
+            }
             else
             {
-                Console.SetCursorPosition(7 + GameField.GetLength(1), 7 + GameField.GetLength(0));
+                Console.SetCursorPosition(7 + gameField.GetLength(1), 7 + gameField.GetLength(0));
             }
-        
         }
-
     }
 }

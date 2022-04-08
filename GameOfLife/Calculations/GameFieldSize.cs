@@ -8,11 +8,16 @@ namespace GameOfLife
 {
     class GameFieldSize
     {
-        // Field size set up  2D array
-        public  T SetFielDimensions<T>(T UserMessage, T InvalidInpuptMessage)
+        /// <summary>
+        /// Field size set up  2D array
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="userMessage"></param>
+        /// <param name="invalidInpuptMessage"></param>
+        /// <returns></returns>
+        public T SetFielDimensions<T>(T userMessage, T invalidInpuptMessage)
         {
-            Console.WriteLine(UserMessage);
-
+            Console.WriteLine(userMessage);
             string userInputDimension = Console.ReadLine();
 
             bool success = Int32.TryParse(userInputDimension, out int dimension);
@@ -23,8 +28,8 @@ namespace GameOfLife
             }
             else
             {
-                Console.WriteLine(InvalidInpuptMessage);
-                return SetFielDimensions(UserMessage, InvalidInpuptMessage);
+                Console.WriteLine(invalidInpuptMessage);
+                return SetFielDimensions(userMessage, invalidInpuptMessage);
                 
             }
 
