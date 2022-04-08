@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace GameOfLife
 {
+    
+
     class GameFieldSize
     {
         /// <summary>
@@ -14,7 +16,7 @@ namespace GameOfLife
         /// <param name="userMessage"></param>
         /// <param name="invalidInpuptMessage"></param>
         /// <returns></returns>
-
+      
         public string SetFielDimensions( string userMessage, string invalidInpuptMessage)
         {
           
