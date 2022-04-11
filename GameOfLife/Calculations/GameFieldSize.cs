@@ -15,7 +15,7 @@
         /// <param name="invalidInpuptMessage"></param>
         /// <returns></returns>
         /// 
-        public int SetFielDimensions(string userMessage, string invalidInpuptMessage)
+        public int SetFieldDimensions(string userMessage, string invalidInpuptMessage)
         {
 
             Console.WriteLine(userMessage);
@@ -30,7 +30,7 @@
             else
             {
                 Console.WriteLine(invalidInpuptMessage);
-                return SetFielDimensions(userMessage, invalidInpuptMessage);
+                return SetFieldDimensions(userMessage, invalidInpuptMessage);
 
             }
         }

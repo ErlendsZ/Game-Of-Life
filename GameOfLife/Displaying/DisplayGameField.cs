@@ -1,4 +1,6 @@
-﻿namespace GameOfLife
+﻿using GameOfLife.Calculations;
+
+namespace GameOfLife
 {
     public class DisplayGameField
     {
@@ -13,7 +15,6 @@
 
                 }
                 Console.WriteLine();
-
             }
         }
         /// <summary>
@@ -24,38 +25,21 @@
         {
             Console.WriteLine("Starting field");
             Console.WriteLine();
-            DisplayGameField gameIterator = new DisplayGameField();
-            gameIterator.PrintArray(gameFieldArray);
+            PrintArray(gameFieldArray);
             Console.WriteLine();
             Thread.Sleep(1000);
+
         }
 
         /// <summary>
-        /// Prints next sarray iteration based on game nextCellGeneration
+        /// Prints next array iteration based on game nextCellGeneration
         /// </summary>
         /// <param name="gameFieldArray"></param>
         public void PrintEveryArrayIteration(int[,] gameFieldArray)
         {
-
-            int iterationCounter = 0;
-
             NextCellGeneration nextCellGeneration = new NextCellGeneration();
+            nextCellGeneration.NextGenerationOutput(gameFieldArray);
 
-            while (!Console.KeyAvailable)
-            {
-                Console.WriteLine("Iteration " + (iterationCounter + 1));
-                Console.WriteLine();
-                nextCellGeneration.CellCalculation(gameFieldArray);
-
-                DisplayGameField gameIterator = new DisplayGameField();
-                gameIterator.PrintArray(gameFieldArray);
-                int aliveCells = nextCellGeneration.CellCalculation(gameFieldArray);
-                Console.WriteLine();
-                Console.WriteLine(aliveCells + " alive cells in iteration " + (iterationCounter + 1));
-                Console.WriteLine();
-                Thread.Sleep(1000);
-                iterationCounter++;
-            }
         }
     }
 }

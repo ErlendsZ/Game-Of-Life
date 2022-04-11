@@ -12,19 +12,18 @@
         //      Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
         /// </summary>
         /// <param name="gameField"></param>
-        public int CellCalculation(int[,] gameField)
+        public void CellCalculation(int[,] gameField)
         {
 
             int lenght = gameField.GetLength(0);
             int width = gameField.GetLength(1);
             int[,] nextGenerationOfCells = new int[lenght, width];
-            int aliveCells = 0;
             for (int i = 0; i < lenght; i++)
             {
                 for (int j = 0; j < width; j++)
                 {
-                    int liveNeighbourCells = CalculateAliveNeighbourCount(lenght, width, i, j, gameField);
-
+                   int liveNeighbourCells = CalculateAliveNeighbourCount(lenght, width, i, j, gameField);
+                    
                     if (gameField[i, j] == 1 && (liveNeighbourCells == 3 || liveNeighbourCells == 2))
                     {
                         nextGenerationOfCells[i, j] = 1;
@@ -33,20 +32,12 @@
                     {
                         nextGenerationOfCells[i, j] = 1;
                     }
-
-                    if (gameField[i, j] == 1)
-                    {
-                        aliveCells++;
-                    }
-
                 }
             }
             CopyNextGenerationArrayToGameFieldArray(lenght, width, nextGenerationOfCells, gameField);
-            return aliveCells;
-
         }
 
-        public int CalculateAliveNeighbourCount(int lenght, int width, int i, int j, int[,] gameField)
+        private int CalculateAliveNeighbourCount(int lenght, int width, int i, int j, int[,] gameField)
         {
             int liveNeighbourCells = 0;
 
@@ -85,7 +76,7 @@
             return liveNeighbourCells;
         }
 
-        public int[,] CopyNextGenerationArrayToGameFieldArray(int lenght, int width, int[,] nextGenerationOfCells, int[,] gameField)
+        private int[,] CopyNextGenerationArrayToGameFieldArray(int lenght, int width, int[,] nextGenerationOfCells, int[,] gameField)
         {
             for (int i = 0; i < lenght; i++)
             {
@@ -98,7 +89,26 @@
 
         }
 
+        public void NextGenerationOutput(int[,] gameFieldArray)
+        {
+            NextCellGeneration nextCellGeneration = new NextCellGeneration();
+            DisplayGameField displayGameField = new DisplayGameField();
+            CellGenerationIterator calculateIterations = new CellGenerationIterator();
+
+            while (!Console.KeyAvailable)
+            {
+                Console.WriteLine("Iteration " + calculateIterations.IterationCounter());
+                Console.WriteLine();
+                nextCellGeneration.CellCalculation(gameFieldArray);
+                displayGameField.PrintArray(gameFieldArray);
+                Console.WriteLine();
+                Console.WriteLine();
+                Thread.Sleep(1000);
+            }
+        }
+
     }
 }
+
 
 
