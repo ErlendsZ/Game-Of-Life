@@ -16,7 +16,8 @@ namespace GameOfLife
         /// <param name="userMessage"></param>
         /// <param name="invalidInpuptMessage"></param>
         /// <returns></returns>
-      
+        /// 
+
         public string SetFielDimensions( string userMessage, string invalidInpuptMessage)
         {
           

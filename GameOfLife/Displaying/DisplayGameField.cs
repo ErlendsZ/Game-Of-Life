@@ -12,7 +12,7 @@ namespace GameOfLife
         /// Iterating through field and displaying results
         /// </summary>
         /// <param name="gameField"></param>
-        public void PrintArrayIteration(int[,] gameField)
+        public void PrintArray(int[,] gameField)
         {
             for (int i = 0; i < gameField.GetLength(0); i++)
             {
@@ -35,7 +35,7 @@ namespace GameOfLife
             Console.WriteLine("Starting field");
             Console.WriteLine();
             DisplayGameField gameIterator = new DisplayGameField();
-            gameIterator.PrintArrayIteration(gameFieldArray);
+            gameIterator.PrintArray(gameFieldArray);
             Console.WriteLine();
             Thread.Sleep(1000);
         }
@@ -54,7 +54,7 @@ namespace GameOfLife
 
                 // Prints changed field
                 DisplayGameField gameIterator = new DisplayGameField();
-                gameIterator.PrintArrayIteration(gameFieldArray);
+                gameIterator.PrintArray(gameFieldArray);
                 Console.WriteLine();
                 Thread.Sleep(1000);
                 IterationCounter++;

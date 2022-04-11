@@ -18,7 +18,7 @@ namespace GameOfLife
         /// </summary>
         /// <param name="gameField"></param>
         /// <returns></returns>
-        public int[,] CellCalculation(int[,] gameField)
+        public void CellCalculation(int[,] gameField)
         {
            
             int lenght = gameField.GetLength(0);
@@ -29,66 +29,67 @@ namespace GameOfLife
             {
                 for (int j = 0; j < width ; j++)
                 {
-                    int liveNeighborCells = 0; 
 
-                    for (int x = -1; x < 2; x++)
-                    {
-                        for (int y = -1; y < 2; y++)
-                        {
-                            int cordinateX = i + x; 
-                            int cordinateY = j + y;
+                   int liveNeighbourCells = CalculateAliveNeighbourCount(lenght, width, i, j, gameField);
 
-                            if (cordinateX > lenght - 1)
-                            {
-                                cordinateX = 0;
-                            }
-
-                            if (cordinateX < 0)
-                            {
-                                cordinateX = lenght - 1;
-                            }
-
-                            if (cordinateY > width-1)       // Calculate outside the borders
-                            {
-                                cordinateY = 0;
-                            }
-
-                            if (cordinateY < 0)
-                            {
-                                cordinateY = width -1;
-                            }
-
-                            liveNeighborCells = liveNeighborCells + gameField[cordinateX, cordinateY];
-
-                        }
-                    }
-                    liveNeighborCells = liveNeighborCells - gameField[i, j];
-
-                    // Calculate cell state according to game rules
-                    //1
-                    if (gameField[i, j] == 1 && liveNeighborCells < 2) 
-                    {
-                        tempArr[i, j] = 0;
-                    }
-                    //2
-                    else if (gameField[i, j] == 1 && (liveNeighborCells == 3 || liveNeighborCells == 2)) 
+                    // Calculate current cell state according to game rules
+                    if (gameField[i, j] == 1 && (liveNeighbourCells == 3 || liveNeighbourCells == 2)) 
                     {
                         tempArr[i, j] = 1;
                     }
-                    //3
-                    else if (gameField[i, j] == 1 && (liveNeighborCells > 3))
-                    {
-                        tempArr[i, j] = 0;
-                    }
-                    //4
-                    else if (gameField[i, j] == 0 && (liveNeighborCells == 3)) 
+                    else if (gameField[i, j] == 0 && (liveNeighbourCells == 3)) 
                     {
                         tempArr[i, j] = 1;
                     }
                 }
             }
 
-            for (int i = 0; i < lenght; i++)    
+            CopyIterationArrayToGameFieldArray(lenght,  width,  tempArr,  gameField);
+        }
+
+        public int CalculateAliveNeighbourCount(int lenght, int width, int i, int j, int[,] gameField)
+        {
+            int liveNeighbourCells = 0;
+
+            for (int x = -1; x < 2; x++)
+            {
+                for (int y = -1; y < 2; y++)
+                {
+                    int cordinateX = i + x;
+                    int cordinateY = j + y;
+
+                    if (cordinateX > lenght - 1)
+                    {
+                        cordinateX = 0;
+                    }
+
+                    if (cordinateX < 0)
+                    {
+                        cordinateX = lenght - 1;
+                    }
+
+                    if (cordinateY > width - 1)
+                    {
+                        cordinateY = 0;
+                    }
+
+                    if (cordinateY < 0)
+                    {
+                        cordinateY = width - 1;
+                    }
+
+                    liveNeighbourCells = liveNeighbourCells + gameField[cordinateX, cordinateY];
+
+                }
+            }
+            liveNeighbourCells = liveNeighbourCells - gameField[i, j];
+            return liveNeighbourCells;
+        }
+
+        public int [,] CopyIterationArrayToGameFieldArray(int lenght, int width, int [,] tempArr, int [,] gameField)
+        {
+
+            for (int i = 0; i < lenght; i++)
             {
                 for (int j = 0; j < width; j++)
                 {
@@ -96,6 +97,7 @@ namespace GameOfLife
                 }
             }
             return gameField;
+
         }
 
     }

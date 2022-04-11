@@ -6,7 +6,7 @@ public class Program
 {
     static public void Main(string[] args)
     {
-        // Set field size
+        //Set field size
         string messageWidth = "Enter Width";
         string messageLenght = "Enter Lenght";
         string invalidInput = "Invalid input, please try again!";
@@ -18,13 +18,13 @@ public class Program
         // Generates Cells in field
         CellPopulator randomCellGenerator = new CellPopulator();
         int[,] gameFieldArray = randomCellGenerator.RandomizeCells(new int[width, lenght]);
-        Console.WriteLine();
+    
 
         // Prints Generated field 
         DisplayGameField displayGameField = new DisplayGameField();
         displayGameField.PrintStartingArray(gameFieldArray);
 
-        // Change contents of field according to rules (1 itteration)
+        // Change contents of field according to rules
         displayGameField.PrintEveryArrayIteration(gameFieldArray);
 
     }

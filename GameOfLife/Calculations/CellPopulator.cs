@@ -24,7 +24,6 @@ namespace GameOfLife
                 }
 
             }
-
             return gameField;
         }
 
