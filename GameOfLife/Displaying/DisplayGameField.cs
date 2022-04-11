@@ -1,5 +1,4 @@
-﻿using GameOfLife.Calculations;
-
+﻿
 namespace GameOfLife
 {
     public class DisplayGameField
