@@ -8,8 +8,12 @@ namespace GameOfLife
 {
     
 
-    public  class GameFieldSize
+    public class GameFieldSize
     {
+        public string messageWidth = "Enter Width";
+        public string messageLenght = "Enter Lenght";
+        public string invalidInput = "Invalid input, please try again!";
+
         /// <summary>
         ///  Field size set up in 2D Array
         /// </summary>
@@ -17,10 +21,9 @@ namespace GameOfLife
         /// <param name="invalidInpuptMessage"></param>
         /// <returns></returns>
         /// 
-
-        public string SetFielDimensions( string userMessage, string invalidInpuptMessage)
+        public int SetFielDimensions( string userMessage, string invalidInpuptMessage)
         {
-          
+       
             Console.WriteLine(userMessage);
             string userInputDimension = Console.ReadLine();
 
@@ -28,19 +31,15 @@ namespace GameOfLife
 
             if (success && dimension > 1 && dimension < 1001)
             {
-                return dimension.ToString();
+                return dimension;
             }
             else
             {
                 Console.WriteLine(invalidInpuptMessage);
                 return SetFielDimensions(userMessage, invalidInpuptMessage);
                 
-            }
-
+            }     
         }
-
     }
-
-
 }
 

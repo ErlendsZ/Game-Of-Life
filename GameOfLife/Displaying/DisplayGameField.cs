@@ -8,10 +8,7 @@ namespace GameOfLife
 {
     public class DisplayGameField
     {
-        /// <summary>
-        /// Iterating through field and displaying results
-        /// </summary>
-        /// <param name="gameField"></param>
+        
         public void PrintArray(int[,] gameField)
         {
             for (int i = 0; i < gameField.GetLength(0); i++)
@@ -24,12 +21,11 @@ namespace GameOfLife
                 Console.WriteLine();
               
             }
-                //if (gameField.GetLength(0) <= gameField.GetLength(1))
-                //    Console.SetCursorPosition(7 + gameField.GetLength(1), 7 + gameField.GetLength(0));
-
-                //if (gameField.GetLength(0) > gameField.GetLength(1))     
-                //    Console.SetCursorPosition(7 + gameField.GetLength(1), 7 + gameField.GetLength(0));  
         }
+        /// <summary>
+        /// Prints generated starting field base on CellPupulator class
+        /// </summary>
+        /// <param name="gameFieldArray"></param>
         public void PrintStartingArray(int[,] gameFieldArray)
         {
             Console.WriteLine("Starting field");
@@ -40,6 +36,10 @@ namespace GameOfLife
             Thread.Sleep(1000);
         }
 
+        /// <summary>
+        /// Prints next sarray iteration based on game rules
+        /// </summary>
+        /// <param name="gameFieldArray"></param>
         public void PrintEveryArrayIteration(int[,] gameFieldArray)
         {
           

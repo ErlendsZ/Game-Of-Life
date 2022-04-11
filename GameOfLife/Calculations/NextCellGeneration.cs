@@ -8,8 +8,9 @@ namespace GameOfLife
 {
     public class NextCellGeneration
     {
+
         /// <summary>
-        ///  Calculates next generation of cells and
+        /// /  Calculates next generation of cells and
         ///  updates game field acording to these 4 rules:
         ///     Any live cell with fewer than two live neighbours dies, as if by underpopulation.
         //      Any live cell with two or three live neighbours lives on to the next generation.
@@ -17,7 +18,6 @@ namespace GameOfLife
         //      Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
         /// </summary>
         /// <param name="gameField"></param>
-        /// <returns></returns>
         public void CellCalculation(int[,] gameField)
         {
            

@@ -9,7 +9,12 @@ namespace GameOfLife
 
     public class CellPopulator
     {
-       
+       /// <summary>
+       /// Pupulates array with random numbers either 1 or 0. Live cell = 1. Dead
+       /// cell = 0.
+       /// </summary>
+       /// <param name="gameField"></param>
+       /// <returns></returns>
         public int[,] RandomizeCells(int[,] gameField)
         {
             Random randomizer = new Random();
