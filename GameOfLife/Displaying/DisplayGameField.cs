@@ -38,19 +38,20 @@
         {
 
             int iterationCounter = 0;
-            
+
             NextCellGeneration nextCellGeneration = new NextCellGeneration();
 
             while (!Console.KeyAvailable)
             {
-                
                 Console.WriteLine("Iteration " + (iterationCounter + 1));
                 Console.WriteLine();
                 nextCellGeneration.CellCalculation(gameFieldArray);
 
-                // Prints changed field
                 DisplayGameField gameIterator = new DisplayGameField();
                 gameIterator.PrintArray(gameFieldArray);
+                int aliveCells = nextCellGeneration.CellCalculation(gameFieldArray);
+                Console.WriteLine();
+                Console.WriteLine(aliveCells + " alive cells in iteration " + (iterationCounter + 1));
                 Console.WriteLine();
                 Thread.Sleep(1000);
                 iterationCounter++;

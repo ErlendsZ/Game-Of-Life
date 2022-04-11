@@ -23,8 +23,8 @@
             {
                 for (int j = 0; j < width; j++)
                 {
-                   int liveNeighbourCells = CalculateAliveNeighbourCount(lenght, width, i, j, gameField);
-                    
+                    int liveNeighbourCells = CalculateAliveNeighbourCount(lenght, width, i, j, gameField);
+
                     if (gameField[i, j] == 1 && (liveNeighbourCells == 3 || liveNeighbourCells == 2))
                     {
                         nextGenerationOfCells[i, j] = 1;
@@ -34,11 +34,11 @@
                         nextGenerationOfCells[i, j] = 1;
                     }
 
-                    if(gameField[i, j] == 1)
+                    if (gameField[i, j] == 1)
                     {
                         aliveCells++;
                     }
-                        
+
                 }
             }
             CopyNextGenerationArrayToGameFieldArray(lenght, width, nextGenerationOfCells, gameField);
