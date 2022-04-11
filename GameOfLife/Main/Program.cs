@@ -21,10 +21,11 @@ public class Program
         Console.WriteLine();
 
         // Prints Generated field 
-        DisplayGameField.PrintStartingArray(gameFieldArray);
+        DisplayGameField displayGameField = new DisplayGameField();
+        displayGameField.PrintStartingArray(gameFieldArray);
 
         // Change contents of field according to rules (1 itteration)
-        DisplayGameField.PrintEveryArrayIteration(gameFieldArray);
+        displayGameField.PrintEveryArrayIteration(gameFieldArray);
 
     }
 }

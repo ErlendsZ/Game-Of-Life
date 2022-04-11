@@ -8,7 +8,7 @@ namespace GameOfLife
 {
     
 
-    class GameFieldSize
+    public  class GameFieldSize
     {
         /// <summary>
         ///  Field size set up in 2D Array

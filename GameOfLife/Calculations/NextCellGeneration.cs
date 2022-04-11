@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameOfLife
 {
-    class NextCellGeneration
+    public class NextCellGeneration
     {
         /// <summary>
         ///  Calculates next generation of cells and
