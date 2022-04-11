@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameOfLife
+﻿namespace GameOfLife
 {
     public class DisplayGameField
     {
-        
+
         public void PrintArray(int[,] gameField)
         {
             for (int i = 0; i < gameField.GetLength(0); i++)
@@ -16,10 +10,10 @@ namespace GameOfLife
                 for (int j = 0; j < gameField.GetLength(1); j++)
                 {
                     Console.Write(gameField[i, j] + " ");
-                    
+
                 }
                 Console.WriteLine();
-              
+
             }
         }
         /// <summary>
@@ -37,27 +31,29 @@ namespace GameOfLife
         }
 
         /// <summary>
-        /// Prints next sarray iteration based on game rules
+        /// Prints next sarray iteration based on game nextCellGeneration
         /// </summary>
         /// <param name="gameFieldArray"></param>
         public void PrintEveryArrayIteration(int[,] gameFieldArray)
         {
-          
-            int IterationCounter = 0;
-            NextCellGeneration rules = new NextCellGeneration();
+
+            int iterationCounter = 0;
+            
+            NextCellGeneration nextCellGeneration = new NextCellGeneration();
 
             while (!Console.KeyAvailable)
             {
-                Console.WriteLine("Iteration " + (IterationCounter + 1));
+                
+                Console.WriteLine("Iteration " + (iterationCounter + 1));
                 Console.WriteLine();
-                rules.CellCalculation(gameFieldArray);
+                nextCellGeneration.CellCalculation(gameFieldArray);
 
                 // Prints changed field
                 DisplayGameField gameIterator = new DisplayGameField();
                 gameIterator.PrintArray(gameFieldArray);
                 Console.WriteLine();
                 Thread.Sleep(1000);
-                IterationCounter++;
+                iterationCounter++;
             }
         }
     }

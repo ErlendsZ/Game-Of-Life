@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameOfLife
+﻿namespace GameOfLife
 {
-    
+
 
     public class GameFieldSize
     {
@@ -15,15 +9,15 @@ namespace GameOfLife
         public string invalidInput = "Invalid input, please try again!";
 
         /// <summary>
-        ///  Field size set up in 2D Array
+        ///  Set ups field in 2D array
         /// </summary>
         /// <param name="userMessage"></param>
         /// <param name="invalidInpuptMessage"></param>
         /// <returns></returns>
         /// 
-        public int SetFielDimensions( string userMessage, string invalidInpuptMessage)
+        public int SetFielDimensions(string userMessage, string invalidInpuptMessage)
         {
-       
+
             Console.WriteLine(userMessage);
             string userInputDimension = Console.ReadLine();
 
@@ -37,9 +31,10 @@ namespace GameOfLife
             {
                 Console.WriteLine(invalidInpuptMessage);
                 return SetFielDimensions(userMessage, invalidInpuptMessage);
-                
-            }     
+
+            }
         }
+
     }
 }
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameOfLife
+﻿namespace GameOfLife
 {
     public class NextCellGeneration
     {
@@ -18,33 +12,38 @@ namespace GameOfLife
         //      Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
         /// </summary>
         /// <param name="gameField"></param>
-        public void CellCalculation(int[,] gameField)
+        public int CellCalculation(int[,] gameField)
         {
-           
+
             int lenght = gameField.GetLength(0);
             int width = gameField.GetLength(1);
-            int[,] tempArr = new int[lenght, width];
-
-            for (int i = 0; i < lenght ; i++)
+            int[,] nextGenerationOfCells = new int[lenght, width];
+            int aliveCells = 0;
+            for (int i = 0; i < lenght; i++)
             {
-                for (int j = 0; j < width ; j++)
+                for (int j = 0; j < width; j++)
                 {
-
                    int liveNeighbourCells = CalculateAliveNeighbourCount(lenght, width, i, j, gameField);
+                    
+                    if (gameField[i, j] == 1 && (liveNeighbourCells == 3 || liveNeighbourCells == 2))
+                    {
+                        nextGenerationOfCells[i, j] = 1;
+                    }
+                    else if (gameField[i, j] == 0 && (liveNeighbourCells == 3))
+                    {
+                        nextGenerationOfCells[i, j] = 1;
+                    }
 
-                    // Calculate current cell state according to game rules
-                    if (gameField[i, j] == 1 && (liveNeighbourCells == 3 || liveNeighbourCells == 2)) 
+                    if(gameField[i, j] == 1)
                     {
-                        tempArr[i, j] = 1;
+                        aliveCells++;
                     }
-                    else if (gameField[i, j] == 0 && (liveNeighbourCells == 3)) 
-                    {
-                        tempArr[i, j] = 1;
-                    }
+                        
                 }
             }
+            CopyNextGenerationArrayToGameFieldArray(lenght, width, nextGenerationOfCells, gameField);
+            return aliveCells;
 
-            CopyIterationArrayToGameFieldArray(lenght,  width,  tempArr,  gameField);
         }
 
         public int CalculateAliveNeighbourCount(int lenght, int width, int i, int j, int[,] gameField)
@@ -86,14 +85,13 @@ namespace GameOfLife
             return liveNeighbourCells;
         }
 
-        public int [,] CopyIterationArrayToGameFieldArray(int lenght, int width, int [,] tempArr, int [,] gameField)
+        public int[,] CopyNextGenerationArrayToGameFieldArray(int lenght, int width, int[,] nextGenerationOfCells, int[,] gameField)
         {
-
             for (int i = 0; i < lenght; i++)
             {
                 for (int j = 0; j < width; j++)
                 {
-                    gameField[i, j] = tempArr[i, j];
+                    gameField[i, j] = nextGenerationOfCells[i, j];
                 }
             }
             return gameField;
