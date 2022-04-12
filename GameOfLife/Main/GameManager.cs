@@ -23,7 +23,7 @@ namespace GameOfLife
         }
 
         /// <summary>
-        /// Formats new generation of cells in gameField array output
+        /// Formats new generation of cells in gameFieldArray  output
         /// </summary>
         /// <param name="gameField">Previous generation of cells</param>
         private void NextGenerationGameField(int[,] gameFieldArray)
