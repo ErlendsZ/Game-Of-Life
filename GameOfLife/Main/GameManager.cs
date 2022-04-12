@@ -26,7 +26,7 @@ namespace GameOfLife
         /// Formats new generation of cells in gameField array output
         /// </summary>
         /// <param name="gameField">Previous generation of cells</param>
-        public void NextGenerationGameField(int[,] gameFieldArray)
+        private void NextGenerationGameField(int[,] gameFieldArray)
         {
             DisplayGameField displayGameField = new DisplayGameField();
             CellGenerationIterator calculateIterations = new CellGenerationIterator();
