@@ -16,29 +16,29 @@ namespace GameOfLife
                 Console.WriteLine();
             }
         }
+
         /// <summary>
-        /// Prints generated starting field base on CellPupulator class
+        /// Prints generated starting array
         /// </summary>
-        /// <param name="gameFieldArray"></param>
-        public void PrintStartingArray(int[,] gameFieldArray)
+        /// <param name="gameField"> Array containing randomized starting cell values</param>
+        public void PrintStartingArray(int[,] gameField)
         {
             Console.WriteLine("Starting field");
             Console.WriteLine();
-            PrintArray(gameFieldArray);
+            PrintArray(gameField);
             Console.WriteLine();
             Thread.Sleep(1000);
 
         }
 
         /// <summary>
-        /// Prints next array iteration based on game nextCellGeneration
+        /// Prints calculated next generation array iteration based on previous 
         /// </summary>
-        /// <param name="gameFieldArray"></param>
-        public void PrintEveryArrayIteration(int[,] gameFieldArray)
+        /// <param name="gameField">Array containing previous generation cell values</param>
+        public void PrintEveryArrayIteration(int[,] gameField)
         {
             NextCellGeneration nextCellGeneration = new NextCellGeneration();
-            nextCellGeneration.NextGenerationOutput(gameFieldArray);
-
+            nextCellGeneration.NextGenerationOutput(gameField);
         }
     }
 }

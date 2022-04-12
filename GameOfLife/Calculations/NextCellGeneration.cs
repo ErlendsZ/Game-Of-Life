@@ -2,16 +2,14 @@
 {
     public class NextCellGeneration
     {
-
         /// <summary>
-        /// /  Calculates next generation of cells and
-        ///  updates game field acording to these 4 rules:
-        ///     Any live cell with fewer than two live neighbours dies, as if by underpopulation.
-        //      Any live cell with two or three live neighbours lives on to the next generation.
-        //      Any live cell with more than three live neighbours dies, as if by overpopulation.
-        //      Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+        ///  Calculates next generation of cells and updates gameField acording to these 4 rules:
+        ///  1)Any live cell with fewer than two live neighbours dies, as if by underpopulation.
+        ///  2)Any live cell with two or three live neighbours lives on to the next generation.
+        ///  3)Any live cell with more than three live neighbours dies, as if by overpopulation.
+        ///  4)Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
         /// </summary>
-        /// <param name="gameField"></param>
+        /// <param name="gameField">Passing previous generation of array for next generation cell calculation</param>
         public void CellCalculation(int[,] gameField)
         {
 
@@ -36,7 +34,6 @@
             }
             CopyNextGenerationArrayToGameFieldArray(lenght, width, nextGenerationOfCells, gameField);
         }
-
         private int CalculateAliveNeighbourCount(int lenght, int width, int i, int j, int[,] gameField)
         {
             int liveNeighbourCells = 0;
@@ -88,10 +85,12 @@
             return gameField;
 
         }
-
-        public void NextGenerationOutput(int[,] gameFieldArray)
+        /// <summary>
+        /// Formats new generation of cells in gameField array output
+        /// </summary>
+        /// <param name="gameField">Previous generation of cells</param>
+        public void NextGenerationOutput(int[,] gameField)
         {
-            NextCellGeneration nextCellGeneration = new NextCellGeneration();
             DisplayGameField displayGameField = new DisplayGameField();
             CellGenerationIterator calculateIterations = new CellGenerationIterator();
 
@@ -99,8 +98,8 @@
             {
                 Console.WriteLine("Iteration " + calculateIterations.IterationCounter());
                 Console.WriteLine();
-                nextCellGeneration.CellCalculation(gameFieldArray);
-                displayGameField.PrintArray(gameFieldArray);
+                CellCalculation(gameField);
+                displayGameField.PrintArray(gameField);
                 Console.WriteLine();
                 Console.WriteLine();
                 Thread.Sleep(1000);

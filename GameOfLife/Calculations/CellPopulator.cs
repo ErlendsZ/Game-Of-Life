@@ -4,11 +4,12 @@
     public class CellPopulator
     {
         /// <summary>
-        /// Pupulates array with random numbers either 1 or 0. Live cell = 1. Dead
+        /// Populates array with random numbers either 1 or 0. Live cell = 1. Dead
         /// cell = 0.
         /// </summary>
-        /// <param name="gameField"></param>
-        /// <returns></returns>
+        /// <param name="gameField"> Starting array gameField created 
+        /// based on user entered lenght and width</param>
+        /// <returns>gamefield array with randomly populated cells (1 or 0)</returns>
         public int[,] RandomizeCells(int[,] gameField)
         {
             Random randomizer = new Random();
@@ -17,8 +18,8 @@
             {
                 for (int j = 0; j < gameField.GetLength(1); j++)
                 {
-                    //gameField[i, j] = randomizer.Next(0, 2); 
-                    GliderCreation(gameField);
+                    gameField[i, j] = randomizer.Next(0, 2); 
+                    //GliderCreation(gameField);
 
                 }
 

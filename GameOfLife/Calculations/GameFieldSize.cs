@@ -9,11 +9,12 @@
         public string invalidInput = "Invalid input, please try again!";
 
         /// <summary>
-        ///  Set ups field in 2D array
+        /// Creates 2D array based on user entered dimensions
         /// </summary>
-        /// <param name="userMessage"></param>
-        /// <param name="invalidInpuptMessage"></param>
-        /// <returns></returns>
+        /// <param name="userMessage"> Message to user about array dimension (lenght or width) user is expected to input</param>
+        /// <param name="invalidInpuptMessage"> Message to user about invalid input attempt</param>
+        /// <returns>if succcess entered dimension (either lenght or width), 
+        /// else invalidInpuptMessage, then userMessage for retrying input</returns>
         /// 
         public int SetFieldDimensions(string userMessage, string invalidInpuptMessage)
         {
