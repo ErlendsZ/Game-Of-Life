@@ -85,27 +85,7 @@
             return gameField;
 
         }
-        /// <summary>
-        /// Formats new generation of cells in gameField array output
-        /// </summary>
-        /// <param name="gameField">Previous generation of cells</param>
-        public void NextGenerationGameField(int[,] gameField)
-        {
-            DisplayGameField displayGameField = new DisplayGameField();
-            CellGenerationIterator calculateIterations = new CellGenerationIterator();
-
-            while (!Console.KeyAvailable)
-            {
-                Console.WriteLine("Iteration " + calculateIterations.IterationCounter());
-                Console.WriteLine();
-                CellCalculation(gameField);
-                displayGameField.PrintArray(gameField);
-                Console.WriteLine();
-                Console.WriteLine();
-                Thread.Sleep(1000);
-            }
-        }
-
+       
     }
 }
 

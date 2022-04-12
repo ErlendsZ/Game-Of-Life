@@ -5,7 +5,7 @@ public class Program
 {
     static public void Main(string[] args)
     {
-        StartNewGameOfLife gameOfLifeStart = new StartNewGameOfLife();
+        GameManager gameOfLifeStart = new GameManager();
         gameOfLifeStart.CreateNewGame();
     }
     
