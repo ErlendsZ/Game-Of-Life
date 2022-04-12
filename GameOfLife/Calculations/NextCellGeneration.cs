@@ -89,7 +89,7 @@
         /// Formats new generation of cells in gameField array output
         /// </summary>
         /// <param name="gameField">Previous generation of cells</param>
-        public void NextGenerationOutput(int[,] gameField)
+        public void NextGenerationGameField(int[,] gameField)
         {
             DisplayGameField displayGameField = new DisplayGameField();
             CellGenerationIterator calculateIterations = new CellGenerationIterator();

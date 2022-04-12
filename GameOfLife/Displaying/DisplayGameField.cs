@@ -32,13 +32,13 @@ namespace GameOfLife
         }
 
         /// <summary>
-        /// Prints calculated next generation array iteration based on previous 
+        /// Prints calculated and formated next generation array iteration based on previous 
         /// </summary>
         /// <param name="gameField">Array containing previous generation cell values</param>
         public void PrintEveryArrayIteration(int[,] gameField)
         {
             NextCellGeneration nextCellGeneration = new NextCellGeneration();
-            nextCellGeneration.NextGenerationOutput(gameField);
+            nextCellGeneration.NextGenerationGameField(gameField);
         }
     }
 }
