@@ -9,6 +9,8 @@ namespace GameOfLife
     public class UserMessages
     {
         CellGenerationIterator cellGenerationIterator = new CellGenerationIterator();
+        CalculateAliveCells calculateAliveCells = new CalculateAliveCells();
+
         public string InputLenghtMessage()
         {
            string lenght = "Enter Lenght";
@@ -34,6 +36,11 @@ namespace GameOfLife
         {
             Console.WriteLine("Starting field");
         }
-       
+
+        public void LiveCellsMessage(int [,] gameFieldArray)
+        {
+            Console.WriteLine("Live cell count  " + calculateAliveCells.AliveCellsInCurrentIteration(gameFieldArray));
+        }
+
     }
 }

@@ -27,15 +27,20 @@
             DisplayGameField displayGameField = new DisplayGameField();
             NextCellGeneration nextCellGeneration = new NextCellGeneration();
             UserMessages userMessages = new UserMessages();
+
+            nextCellGeneration.CellCalculation(gameFieldArray);
+
             while (!Console.KeyAvailable)
             {
-                userMessages.IterationMessage(); 
+                userMessages.IterationMessage();
+                userMessages.LiveCellsMessage(gameFieldArray);
                 Console.WriteLine();
-                nextCellGeneration.CellCalculation(gameFieldArray);
                 displayGameField.PrintArray(gameFieldArray);
+                nextCellGeneration.CellCalculation(gameFieldArray);
                 Console.WriteLine();
                 Console.WriteLine();
                 Thread.Sleep(1000);
+                
             }
         }
     }
