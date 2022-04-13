@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameOfLife
+﻿namespace GameOfLife
 {
     public class CellGenerationIterator
     {
-       private int iterationCounter = 0;
+        private int iterationCounter = 0;
+
+        /// <summary>
+        /// Iteration number counter increment by 1
+        /// </summary>
+        /// <returns>Iteration number for current CellGeneration</returns>
         public int IterationCounter()
         {
-           
             iterationCounter++;
-
             return iterationCounter;
         }
     }

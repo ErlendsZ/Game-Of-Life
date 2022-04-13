@@ -18,7 +18,6 @@
         /// 
         public int SetFieldDimensions(string userMessage, string invalidInpuptMessage)
         {
-
             Console.WriteLine(userMessage);
             string userInputDimension = Console.ReadLine();
 
@@ -32,10 +31,8 @@
             {
                 Console.WriteLine(invalidInpuptMessage);
                 return SetFieldDimensions(userMessage, invalidInpuptMessage);
-
             }
         }
-
     }
 }
 

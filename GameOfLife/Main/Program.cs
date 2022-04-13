@@ -8,7 +8,7 @@ public class Program
         GameManager gameOfLifeStart = new GameManager();
         gameOfLifeStart.CreateNewGame();
     }
-    
+
 }
 
 

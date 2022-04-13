@@ -10,9 +10,9 @@
         ///  4)Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
         /// </summary>
         /// <param name="gameField">Passing previous generation of array for next generation cell calculation</param>
+
         public void CellCalculation(int[,] gameField)
         {
-
             int lenght = gameField.GetLength(0);
             int width = gameField.GetLength(1);
             int[,] nextGenerationOfCells = new int[lenght, width];
@@ -20,8 +20,8 @@
             {
                 for (int j = 0; j < width; j++)
                 {
-                   int liveNeighbourCells = CalculateAliveNeighbourCount(lenght, width, i, j, gameField);
-                    
+                    int liveNeighbourCells = CalculateAliveNeighbourCount(lenght, width, i, j, gameField);
+
                     if (gameField[i, j] == 1 && (liveNeighbourCells == 3 || liveNeighbourCells == 2))
                     {
                         nextGenerationOfCells[i, j] = 1;
@@ -34,6 +34,17 @@
             }
             CopyNextGenerationArrayToGameFieldArray(lenght, width, nextGenerationOfCells, gameField);
         }
+
+        /// <summary>
+        /// Calculates state of currently selected cell 8 neihbhours. Live neihbour = 1. Dead = 0
+        /// </summary>
+        /// <param name="lenght">gameField array lenght</param>
+        /// <param name="width"> gameField array lenght</param>
+        /// <param name="i"> Selected cell cordinate in array</param>
+        /// <param name="j"> Selected cell cordiante in arry</param>
+        /// <param name="gameField"> array from which current cell acording to [i,j] cordinates
+        /// is taken for neighbour search[cordinateX,cordinateY]</param>
+        /// <returns>Live neighbour count of currently selected cell</returns>
         private int CalculateAliveNeighbourCount(int lenght, int width, int i, int j, int[,] gameField)
         {
             int liveNeighbourCells = 0;
@@ -65,11 +76,12 @@
                         cordinateY = width - 1;
                     }
 
-                    liveNeighbourCells = liveNeighbourCells + gameField[cordinateX, cordinateY];
+                    liveNeighbourCells += gameField[cordinateX, cordinateY];
 
                 }
             }
-            liveNeighbourCells = liveNeighbourCells - gameField[i, j];
+
+            liveNeighbourCells -= gameField[i, j];
             return liveNeighbourCells;
         }
 
@@ -85,7 +97,7 @@
             return gameField;
 
         }
-       
+
     }
 }
 
