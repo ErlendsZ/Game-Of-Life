@@ -23,7 +23,9 @@ namespace GameOfLife
         /// <param name="gameField"> Array containing randomized starting cell values</param>
         public void PrintStartingArray(int[,] gameField)
         {
-            Console.WriteLine("Starting field");
+            UserMessages userMessages = new UserMessages();
+
+            userMessages.StartingMessage();
             Console.WriteLine();
             PrintArray(gameField);
             Console.WriteLine();

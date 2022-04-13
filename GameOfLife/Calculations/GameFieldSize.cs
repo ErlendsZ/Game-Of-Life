@@ -4,10 +4,6 @@
 
     public class GameFieldSize
     {
-        public string messageWidth = "Enter Width";
-        public string messageLenght = "Enter Lenght";
-        public string invalidInput = "Invalid input, please try again!";
-
         /// <summary>
         /// Creates 2D array based on user entered dimensions
         /// </summary>

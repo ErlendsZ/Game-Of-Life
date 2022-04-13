@@ -5,8 +5,10 @@
         public void CreateNewGame()
         {
             GameFieldSize gameFieldSize = new GameFieldSize();
-            int lenght = gameFieldSize.SetFieldDimensions(gameFieldSize.messageLenght, gameFieldSize.invalidInput);
-            int width = gameFieldSize.SetFieldDimensions(gameFieldSize.messageWidth, gameFieldSize.invalidInput);
+            UserMessages userMessages = new UserMessages(); 
+
+            int lenght = gameFieldSize.SetFieldDimensions(userMessages.InputLenghtMessage(), userMessages.ErrorMessage());
+            int width = gameFieldSize.SetFieldDimensions(userMessages.InputWidthMessage(), userMessages.ErrorMessage());
 
             CellPopulator randomCellGenerator = new CellPopulator();
             int[,] gameFieldArray = randomCellGenerator.RandomizeCells(new int[width, lenght]);
@@ -23,12 +25,11 @@
         private void NextGenerationGameField(int[,] gameFieldArray)
         {
             DisplayGameField displayGameField = new DisplayGameField();
-            CellGenerationIterator calculateIterations = new CellGenerationIterator();
             NextCellGeneration nextCellGeneration = new NextCellGeneration();
-
+            UserMessages userMessages = new UserMessages();
             while (!Console.KeyAvailable)
             {
-                Console.WriteLine("Iteration " + calculateIterations.IterationCounter());
+                userMessages.IterationMessage(); 
                 Console.WriteLine();
                 nextCellGeneration.CellCalculation(gameFieldArray);
                 displayGameField.PrintArray(gameFieldArray);
