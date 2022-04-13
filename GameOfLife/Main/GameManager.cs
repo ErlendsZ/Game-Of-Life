@@ -4,8 +4,13 @@
     {
         public void CreateNewGame()
         {
+
+            
+            
             GameFieldSize gameFieldSize = new GameFieldSize();
-            UserMessages userMessages = new UserMessages(); 
+            UserMessages userMessages = new UserMessages();
+            Output output = new Output();
+            output.TxtFileOutput();
 
             int lenght = gameFieldSize.SetFieldDimensions(userMessages.InputLenghtMessage(), userMessages.ErrorMessage());
             int width = gameFieldSize.SetFieldDimensions(userMessages.InputWidthMessage(), userMessages.ErrorMessage());
