@@ -10,21 +10,20 @@ namespace GameOfLife
     {
         public void TxtFileOutput()
         {
-         
+            GameManager gameManager = new GameManager();
             FileStream ostrm;
             StreamWriter writer;
             TextWriter oldOut = Console.Out;
-            GameManager gameManager = new GameManager();
             try
             {
-                ostrm = new FileStream("./GameOfLifeOutput.txt", FileMode.Create, FileAccess.Write);
+                ostrm = new FileStream("./GameOfLife.txt", FileMode.Create, FileAccess.Write);
                 writer = new StreamWriter(ostrm);
             }
             catch (Exception e)
             {
-                //Console.WriteLine("Cannot open GameOfLifeOutput.txt for writing");
-                //Console.WriteLine(e.Message);
-                //return;
+                Console.WriteLine("Cannot open GameOfLife.txt for writing");
+                Console.WriteLine(e.Message);
+                return;
             }
             Console.SetOut(writer);
             gameManager.CreateNewGame();
@@ -32,7 +31,6 @@ namespace GameOfLife
             writer.Close();
             ostrm.Close();
             Console.WriteLine("Done writing file");
-            Environment.Exit(0);
         }
     }
 }

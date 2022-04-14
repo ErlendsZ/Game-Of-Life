@@ -4,13 +4,9 @@
     {
         public void CreateNewGame()
         {
-
-            
             
             GameFieldSize gameFieldSize = new GameFieldSize();
             UserMessages userMessages = new UserMessages();
-            Output output = new Output();
-            output.TxtFileOutput();
 
             int lenght = gameFieldSize.SetFieldDimensions(userMessages.InputLenghtMessage(), userMessages.ErrorMessage());
             int width = gameFieldSize.SetFieldDimensions(userMessages.InputWidthMessage(), userMessages.ErrorMessage());
@@ -45,12 +41,25 @@
                 Console.WriteLine();
                 Console.WriteLine();
                 Thread.Sleep(1000);
-                
+
+            }
+        }
+        public void SelectOutputType()
+        {
+            Console.WriteLine("Write 1 for txt output 0 for console output, other number for exit");
+            int input = Int16.Parse(Console.ReadLine());
+  
+            if (input == 1)
+            {
+                Output output = new Output();
+                Console.WriteLine("Enter Lenght and Width to start file writing, after that, press any key to stop programm");
+                output.TxtFileOutput();
+            }
+
+            if (input == 0)
+            {
+                CreateNewGame();
             }
         }
     }
-
-
-
-
 }
