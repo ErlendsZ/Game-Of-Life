@@ -35,30 +35,13 @@
             {
                 userMessages.IterationMessage();
                 userMessages.LiveCellsMessage(gameFieldArray);
-                Console.WriteLine();
+                Logger.WriteLine("");
                 displayGameField.PrintArray(gameFieldArray);
                 nextCellGeneration.CellCalculation(gameFieldArray);
-                Console.WriteLine();
-                Console.WriteLine();
+                Logger.WriteLine("");
+                Logger.WriteLine("");
                 Thread.Sleep(1000);
 
-            }
-        }
-        public void SelectOutputType()
-        {
-            Console.WriteLine("Write 1 for txt output 0 for console output, other number for exit");
-            int input = Int16.Parse(Console.ReadLine());
-  
-            if (input == 1)
-            {
-                Output output = new Output();
-                Console.WriteLine("Enter Lenght and Width to start file writing, after that, press any key to stop programm");
-                output.TxtFileOutput();
-            }
-
-            if (input == 0)
-            {
-                CreateNewGame();
             }
         }
     }

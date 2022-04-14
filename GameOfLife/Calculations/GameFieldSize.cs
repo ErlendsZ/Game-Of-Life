@@ -12,10 +12,12 @@
         /// <returns>if succcess entered dimension (either lenght or width), 
         /// else invalidInpuptMessage, then userMessage for retrying input</returns>
         /// 
+
         public int SetFieldDimensions(string userMessage, string invalidInpuptMessage)
         {
-            Console.WriteLine(userMessage);
+            Logger.WriteLine(userMessage);
             string userInputDimension = Console.ReadLine();
+            Logger.ReadLine(userInputDimension);
 
             bool success = Int32.TryParse(userInputDimension, out int dimension);
 
@@ -25,7 +27,7 @@
             }
             else
             {
-                Console.WriteLine(invalidInpuptMessage);
+                Logger.WriteLine(invalidInpuptMessage);
                 return SetFieldDimensions(userMessage, invalidInpuptMessage);
             }
         }

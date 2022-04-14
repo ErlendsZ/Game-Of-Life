@@ -13,8 +13,8 @@ namespace GameOfLife
 
         public string InputLenghtMessage()
         {
-           string lenght = "Enter Lenght";
-           return lenght;
+            string lenght = "Enter Lenght";
+            return lenght;
         }
         public string InputWidthMessage()
         {
@@ -29,18 +29,22 @@ namespace GameOfLife
         }
         public void IterationMessage()
         {
-            Console.WriteLine("Iteration " + cellGenerationIterator.IterationCounter());
+            Logger.WriteLine("Iteration " + cellGenerationIterator.IterationCounter());
         }
 
         public void StartingMessage()
         {
-            Console.WriteLine("Starting field");
+            Logger.WriteLine("Starting field");
         }
 
-        public void LiveCellsMessage(int [,] gameFieldArray)
+        public void LiveCellsMessage(int[,] gameFieldArray)
         {
-            Console.WriteLine("Live cell count  " + calculateAliveCells.AliveCellsInCurrentIteration(gameFieldArray));
+            Logger.WriteLine("Live cell count  " + calculateAliveCells.AliveCellsInCurrentIteration(gameFieldArray));
         }
 
+        public void OutputChoiceMessage()
+        {
+            Console.WriteLine("Write 1 for txt output 0 for only console output");
+        }
     }
 }

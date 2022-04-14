@@ -10,10 +10,10 @@ namespace GameOfLife
             {
                 for (int j = 0; j < gameField.GetLength(1); j++)
                 {
-                    Console.Write(gameField[i, j] + " ");
+                    Logger.Write(gameField[i, j] + " ");
 
                 }
-                Console.WriteLine();
+                Logger.WriteLine("");
             }
         }
 
@@ -27,9 +27,9 @@ namespace GameOfLife
 
             userMessages.StartingMessage();
             userMessages.LiveCellsMessage(gameFieldArray);
-            Console.WriteLine();
+            Logger.WriteLine("");
             PrintArray(gameFieldArray);
-            Console.WriteLine();
+            Logger.WriteLine("");
             Thread.Sleep(1000);
         }
     }
