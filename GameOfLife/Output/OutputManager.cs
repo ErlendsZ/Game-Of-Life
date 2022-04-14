@@ -22,8 +22,8 @@ namespace GameOfLife
             if (success && input == 1)
             {
                 gameManager.CreateNewGame();
-                Logger.SaveLog(); 
-                return 0;
+                Logger.SaveLog();
+                return 1;
             }
 
             if (success && input == 0)

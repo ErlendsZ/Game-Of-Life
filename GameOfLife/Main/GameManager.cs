@@ -41,7 +41,6 @@
                 Logger.WriteLine("");
                 Logger.WriteLine("");
                 Thread.Sleep(1000);
-
             }
         }
     }

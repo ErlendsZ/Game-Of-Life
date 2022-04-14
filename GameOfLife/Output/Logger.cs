@@ -14,7 +14,7 @@ namespace GameOfLife
         public static StringBuilder loggerStringBuilder = new StringBuilder();
 
         /// <summary>
-        /// Writes text in new line
+        /// Appends text in new line in loggerStringBuilder
         /// </summary>
         /// <param name="loggerString"> string that is currently being writen loggerStringBuilder</param>
         public static void WriteLine(string loggerString)
@@ -30,7 +30,7 @@ namespace GameOfLife
         }
 
         /// <summary>
-        /// Saves user entered input lines into log file
+        /// Appends user entered input lines into loggerStringBuilder
         /// </summary>
         /// <param name="loggerString"> string that is currently being writen int to loggerStringBuilder </param>
         public static void ReadLine(string loggerString)
