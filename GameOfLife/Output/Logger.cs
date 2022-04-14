@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace GameOfLife
 {
     /// <summary>
-    /// Writes both in console and in logg file
+    /// Writes output both in console and in logg file
     /// </summary>
     public static class Logger
     {
@@ -23,10 +23,6 @@ namespace GameOfLife
             loggerStringBuilder.Append(loggerString).Append(Environment.NewLine);
         }
 
-        /// <summary>
-        /// Writes text in new line
-        /// </summary>
-        /// <param name="loggerString"> string that is currently being writen int to loggerStringBuilder </param>
         public static void Write(string loggerString)
         {
             Console.Write(loggerString);
