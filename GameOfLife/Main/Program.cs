@@ -5,8 +5,8 @@ public class Program
 {
     static public void Main(string[] args)
     {
-       OutputManager output = new OutputManager();
-       output.SelectOutputType();
+        GameManager manager = new GameManager();
+        manager.CreateNewGame();
     }
 
 }

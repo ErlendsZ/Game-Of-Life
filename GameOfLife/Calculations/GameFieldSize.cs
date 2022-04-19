@@ -11,8 +11,6 @@
         /// <param name="invalidInpuptMessage"> Message to user about invalid input attempt</param>
         /// <returns>if succcess entered dimension (either lenght or width), 
         /// else invalidInpuptMessage, then userMessage for retrying input</returns>
-        /// 
-
         public int SetFieldDimensions(string userMessage, string invalidInpuptMessage)
         {
             Logger.WriteLine(userMessage);

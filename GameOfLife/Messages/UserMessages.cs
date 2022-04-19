@@ -10,7 +10,6 @@ namespace GameOfLife
     {
         CellGenerationIterator cellGenerationIterator = new CellGenerationIterator();
         CalculateAliveCells calculateAliveCells = new CalculateAliveCells();
-
         public string InputLenghtMessage()
         {
             string lenght = "Enter Lenght";
