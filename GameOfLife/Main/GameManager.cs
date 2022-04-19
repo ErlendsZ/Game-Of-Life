@@ -7,11 +7,11 @@
             GameFieldSize gameFieldSize = new GameFieldSize();
             UserMessages userMessages = new UserMessages();
             OutputManager outputManager = new OutputManager();
+   
             bool isTextOutput = outputManager.SelectOutputType();
-
             int lenght = gameFieldSize.SetFieldDimensions(userMessages.InputLenghtMessage(), userMessages.ErrorMessage());
             int width = gameFieldSize.SetFieldDimensions(userMessages.InputWidthMessage(), userMessages.ErrorMessage());
- 
+
 
             CellPopulator randomCellGenerator = new CellPopulator();
             int[,] gameFieldArray = randomCellGenerator.RandomizeCells(new int[width, lenght]);

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameOfLife
+﻿namespace GameOfLife
 {
     public class CalculateAliveCells
     {
-        public int AliveCellsInCurrentIteration(int [,] gameFieldArray)
+        public int AliveCellsInCurrentIteration(int[,] gameFieldArray)
         {
             int aliveCells = 0;
 
