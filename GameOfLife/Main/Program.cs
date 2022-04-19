@@ -5,11 +5,12 @@ public class Program
 {
     static public void Main(string[] args)
     {
-        //GameManager manager = new GameManager();
-        //manager.CreateNewGame();
 
-        FileReader reader = new FileReader();
-        reader.ReadLastInputData();
+        GameSelection gameSelection = new GameSelection();
+        gameSelection.SelectMode();
+
+        //FileReader reader = new FileReader();
+        //reader.ReadLastInputData();
 
     }
 

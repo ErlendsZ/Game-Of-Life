@@ -25,7 +25,7 @@
             }
             else
             {
-                Logger.WriteLine(invalidInpuptMessage);
+                Console.WriteLine(invalidInpuptMessage);
                 return SetFieldDimensions(userMessage, invalidInpuptMessage);
             }
         }

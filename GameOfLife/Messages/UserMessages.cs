@@ -32,12 +32,21 @@
 
         public void LiveCellsMessage(int[,] gameFieldArray)
         {
-            Logger.WriteLine("Live cell count  " + calculateAliveCells.AliveCellsInCurrentIteration(gameFieldArray));
+            Logger.WriteLine("Live cell count  " + calculateAliveCells.AliveCellsInCurrentIteration(gameFieldArray) +  "  ");
         }
 
         public void OutputChoiceMessage()
         {
             Console.WriteLine("Write 1 for txt output 0 for only console output");
+        }
+
+        public void GetMenuSelection()
+        {
+
+        Console.WriteLine("1. Start Game");
+        Console.WriteLine("2. Load Game");
+        Console.WriteLine("3. Quit Game");
+       
         }
     }
 }

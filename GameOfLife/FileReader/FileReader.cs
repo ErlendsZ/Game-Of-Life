@@ -8,21 +8,37 @@
 
             int Lenght = Int16.Parse(File.ReadLines(FileName).Skip(1).Take(2).First());
             int Width = Int16.Parse(File.ReadLines(FileName).Skip(3).Take(4).First());
- 
-     
-            Console.WriteLine("width is "  );
-            Console.WriteLine("lenght is "  );
-            Console.WriteLine("Line" + Lenght);
-            Console.WriteLine("Line" + Width);
-            
-            string[] lines = File.ReadAllLines(@"./GameOfLifeOutput.txt");
-            string[,] data = new string[20,20];
+            int index = 0;
+            int Total = Lenght * Width;
+
+            string[,] array2D = new string[Lenght, Width];
+            string[] array1D = new string[Total];
+            string [] lines = File.ReadAllLines(@"./GameOfLifeOutput.txt");
             
 
             foreach (string line in lines)
             {
                 Console.WriteLine(line);
-              
+
+            }
+
+            Console.WriteLine("Entered Lenght " + Lenght);
+            Console.WriteLine("Entered Width " + Width);
+
+            foreach (var line in lines.Reverse())
+            {
+
+                //if (line == "")
+                //    break;
+
+                //for (int i = 0; i < length; i++)
+                //{
+                //    array1D[index] = line[i];
+                //    index++;
+                //}
+               
+                // process line here
+                Console.WriteLine(line);
             }
 
             // Keep the console window open in debug mode.

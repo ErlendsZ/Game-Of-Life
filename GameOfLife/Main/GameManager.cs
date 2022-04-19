@@ -2,7 +2,7 @@
 {
     public class GameManager
     {
-        public void CreateNewGame()
+        public void BuildGame()
         {
             GameFieldSize gameFieldSize = new GameFieldSize();
             UserMessages userMessages = new UserMessages();
@@ -16,8 +16,7 @@
             CellPopulator randomCellGenerator = new CellPopulator();
             int[,] gameFieldArray = randomCellGenerator.RandomizeCells(new int[width, lenght]);
 
-            DisplayGameField displayGameField = new DisplayGameField();
-            displayGameField.PrintStartingArray(gameFieldArray);
+            Console.Clear();
             NextGenerationGameField(gameFieldArray, isTextOutput);
         }
 
@@ -35,6 +34,7 @@
 
             while (!Console.KeyAvailable)
             {
+                Console.SetCursorPosition(0, 0);
                 userMessages.IterationMessage();
                 userMessages.LiveCellsMessage(gameFieldArray);
                 Logger.WriteLine("");

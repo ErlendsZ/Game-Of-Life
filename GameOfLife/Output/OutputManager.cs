@@ -6,8 +6,7 @@
         /// Based on user choice current output in a text file or not
         /// </summary>
         public bool SelectOutputType()
-        {
-            GameManager gameManager = new GameManager();
+        {      
             UserMessages userMessages = new UserMessages();
             bool isTextOutput;
             userMessages.OutputChoiceMessage();
