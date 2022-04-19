@@ -14,18 +14,13 @@
             Console.WriteLine("lenght is "  );
             Console.WriteLine("Line" + Lenght);
             Console.WriteLine("Line" + Width);
-            // Example #2
-            // Read each line of the file into a string array. Each element
-            // of the array is one line of the file.
+            
             string[] lines = File.ReadAllLines(@"./GameOfLifeOutput.txt");
             string[,] data = new string[20,20];
             
 
-            
-            // Display the file contents by using a foreach loop.
             foreach (string line in lines)
             {
-                // Use a tab to indent each line of the file.
                 Console.WriteLine(line);
               
             }
