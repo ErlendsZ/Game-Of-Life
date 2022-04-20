@@ -34,7 +34,7 @@
 
         public static void LiveCellsMessage(int[,] gameFieldArray)
         {
-            CalculateAliveCells calculateAliveCells = new CalculateAliveCells();
+            CellStateChecker calculateAliveCells = new CellStateChecker();
             Logger.WriteLine("Live cell count  " + calculateAliveCells.AliveCellsInCurrentIteration(gameFieldArray) +  "  ");
         }
 
