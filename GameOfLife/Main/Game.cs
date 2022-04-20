@@ -12,6 +12,8 @@ namespace GameOfLife
         {
             GameFieldData gameFieldData = new GameFieldData();
             Renderer renderer = new Renderer();
+            UserMessages userMessages = new UserMessages();
+
             while (true)
             {
                 renderer.PrintArray(gameFieldData.gameFieldArray);

@@ -2,8 +2,8 @@
 {
     public class UserMessages
     {
-        CellGenerationIterator cellGenerationIterator = new CellGenerationIterator();
         CalculateAliveCells calculateAliveCells = new CalculateAliveCells();
+        public static int i = 0;
         public string InputLenghtMessage()
         {
             string lenght = "Enter Lenght";
@@ -22,7 +22,8 @@
         }
         public void IterationMessage()
         {
-            Logger.WriteLine("Iteration " + cellGenerationIterator.IterationCounter());
+            i++;
+            Logger.WriteLine("Iteration " + i);
         }
 
         public void StartingMessage()
@@ -40,11 +41,10 @@
             Console.WriteLine("Write 1 for txt output 0 for only console output");
         }
 
-        public void DisplayMainMenu()
+        public string DisplayMainMenu()
         {
-            Console.WriteLine("1. Start Game");
-            Console.WriteLine("2. Load Game");
-            Console.WriteLine("3. Quit Game");
+            string MainMenuMessages = "1. Start Game. \n2. Load Game. \n3. Quit Game";
+            return MainMenuMessages;
         }
         public void IncorrectInputMessage()
         {
