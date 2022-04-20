@@ -45,7 +45,7 @@
 
         public static string DisplayMainMenu()
         {
-            string MainMenuMessages = "1. Start Game. \n2. Load Game. \n3. Quit Game";
+            string MainMenuMessages = "1. Start New Game. \n2. Load Game. \n3. Quit Game";
             return MainMenuMessages;
         }
         public static void IncorrectInputMessage()

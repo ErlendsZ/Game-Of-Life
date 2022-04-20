@@ -5,7 +5,6 @@
         public readonly int[,] gameFieldArray;
         public GameFieldData()
         {
-            
             int rows = UserComunicator.GetInputValueRanged("Enter row count", 5, 50);
             int colums = UserComunicator.GetInputValueRanged("Enter colum count", 5, 50);
             gameFieldArray = new int[rows, colums];

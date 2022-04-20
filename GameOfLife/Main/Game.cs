@@ -10,6 +10,7 @@ namespace GameOfLife
     {
         public void Run()
         {
+            Console.Clear();
             int choice = UserComunicator.GetInputValueRanged(UserMessages.DisplayMainMenu(), 1, 3);
 
             switch (choice)
@@ -17,12 +18,14 @@ namespace GameOfLife
                 case 1:
                     GameFieldData gameFieldData = new GameFieldData();
                     Renderer renderer = new Renderer();
-                    while (true)
+                    while (!Console.KeyAvailable)
                     {
                         renderer.PrintArray(gameFieldData.gameFieldArray);
                         gameFieldData.GetNextGeneration();
+                        Console.WriteLine("Press any key to exit");
                         Thread.Sleep(1000);
                     }
+                    Run();
                     break;
 
                 case 2:

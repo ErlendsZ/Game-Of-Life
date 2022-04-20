@@ -12,6 +12,7 @@ namespace GameOfLife
             Console.SetCursorPosition(0, 0);
             UserMessages.LiveCellsMessage(gameField);
             UserMessages.IterationMessage();
+
             for (int i = 0; i < gameField.GetLength(0); i++)
             {
                 for (int j = 0; j < gameField.GetLength(1); j++)
@@ -21,6 +22,8 @@ namespace GameOfLife
                 }
                 Logger.WriteLine("");
             }
+
+
 
         }
     }
