@@ -40,13 +40,31 @@
             Console.WriteLine("Write 1 for txt output 0 for only console output");
         }
 
-        public void GetMenuSelection()
+        public void DisplayMainMenu()
         {
+            Console.WriteLine("1. Start Game");
+            Console.WriteLine("2. Load Game");
+            Console.WriteLine("3. Quit Game");
+        }
+        public void IncorrectInputMessage()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Input must be a number!");
+            Console.ResetColor();
+        }
 
-        Console.WriteLine("1. Start Game");
-        Console.WriteLine("2. Load Game");
-        Console.WriteLine("3. Quit Game");
-       
+        public void NumberTooHighOrLow()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Selected number is too high or low!");
+            Console.ResetColor();
+        }
+
+        public void ExitOngoingGame()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Press 2 to go back to menu");
+            Console.ResetColor();
         }
     }
 }

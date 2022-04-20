@@ -1,7 +1,7 @@
 ﻿namespace GameOfLife
 {
 
-    public class CellPopulator
+    public static class CellPopulator
     {
         /// <summary>
         /// Populates array with random numbers either 1 or 0. Live cell = 1. Dead
@@ -10,7 +10,7 @@
         /// <param name="gameField"> Starting array gameField created 
         /// based on user entered lenght and width</param>
         /// <returns>gamefield array with randomly populated cells (1 or 0)</returns>
-        public int[,] RandomizeCells(int[,] gameField)
+        public static void RandomizeCells(int[,] gameField)
         {
             Random randomizer = new Random();
 
@@ -21,11 +21,9 @@
                     gameField[i, j] = randomizer.Next(0, 2);
                 }
             }
-
-            return gameField;
         }
 
-        public void GliderCreation(int[,] gameField)
+        public static void GliderCreation(int[,] gameField)
         {
             for (int i = 0; i < gameField.GetLength(0); i++)
             {
