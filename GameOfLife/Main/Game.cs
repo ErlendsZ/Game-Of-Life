@@ -6,19 +6,31 @@ using System.Threading.Tasks;
 
 namespace GameOfLife
 {
-    internal class Game
+    public class Game
     {
         public void Run()
         {
-            GameFieldData gameFieldData = new GameFieldData();
-            Renderer renderer = new Renderer();
-            UserMessages userMessages = new UserMessages();
+            int choice = UserComunicator.GetInputValueRanged(UserMessages.DisplayMainMenu(), 1, 3);
 
-            while (true)
+            switch (choice)
             {
-                renderer.PrintArray(gameFieldData.gameFieldArray);
-                gameFieldData.GetNextGeneration();
-                Thread.Sleep(1000);
+                case 1:
+                    GameFieldData gameFieldData = new GameFieldData();
+                    Renderer renderer = new Renderer();
+                    while (true)
+                    {
+                        renderer.PrintArray(gameFieldData.gameFieldArray);
+                        gameFieldData.GetNextGeneration();
+                        Thread.Sleep(1000);
+                    }
+                    break;
+
+                case 2:
+                    Console.WriteLine("Not Implemented");
+                    break;
+                case 3:
+                    Console.WriteLine("dogee");
+                    break;
             }
         }
     }

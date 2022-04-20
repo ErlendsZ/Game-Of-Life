@@ -22,7 +22,7 @@ namespace GameOfLife
                 }
                 else
                 {
-                    IncorrectInputMessage();
+                    UserMessages.IncorrectInputMessage();
                     Console.WriteLine(PressKeyMessage);
                     Console.ReadKey();
                 }
@@ -40,24 +40,11 @@ namespace GameOfLife
                 }
                 else
                 {
-                    NumberTooHighOrLow();
+                    UserMessages.NumberTooHighOrLow();
                     Console.WriteLine(PressKeyMessage);
                     Console.ReadKey();
                 }
             }
-        }
-        public static void IncorrectInputMessage()
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Input must be a number!");
-            Console.ResetColor();
-        }
-
-        public static void NumberTooHighOrLow()
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Selected number is too high or low!");
-            Console.ResetColor();
         }
     }
 }

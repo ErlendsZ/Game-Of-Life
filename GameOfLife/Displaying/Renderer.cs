@@ -10,10 +10,8 @@ namespace GameOfLife
         public void PrintArray(int[,] gameField)
         {
             Console.SetCursorPosition(0, 0);
-            UserMessages userMessages = new UserMessages();
-            userMessages.LiveCellsMessage(gameField);
-            userMessages.IterationMessage();
-
+            UserMessages.LiveCellsMessage(gameField);
+            UserMessages.IterationMessage();
             for (int i = 0; i < gameField.GetLength(0); i++)
             {
                 for (int j = 0; j < gameField.GetLength(1); j++)
