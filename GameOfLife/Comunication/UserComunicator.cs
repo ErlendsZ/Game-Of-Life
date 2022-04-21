@@ -8,7 +8,6 @@ namespace GameOfLife
 {
     public static class UserComunicator
     {
-        private const string PressKeyMessage = "Press any key to continue.";
         public static int GetInputValue(string request)
         {
             while (true)
@@ -22,12 +21,13 @@ namespace GameOfLife
                 }
                 else
                 {
-                    UserMessages.IncorrectInputMessage();
-                    Console.WriteLine(PressKeyMessage);
+                    PrintErrorMessage(Repository.NotNumberMessage);
+                    Console.WriteLine(Repository.PressKeyMessage);
                     Console.ReadKey();
                 }
             }
         }
+
         public static int GetInputValueRanged(string request, int lowerLimit, int upperLimit)
         {
             while (true)
@@ -40,11 +40,30 @@ namespace GameOfLife
                 }
                 else
                 {
-                    UserMessages.NumberTooHighOrLow();
-                    Console.WriteLine(PressKeyMessage);
+                    PrintErrorMessage(Repository.OutOfRangeMessage);
+                    Console.WriteLine(Repository.PressKeyMessage);
                     Console.ReadKey();
                 }
             }
+        }
+
+        public static void PrintErrorMessage(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(message);
+            Console.ResetColor();
+        }
+
+        public static void PrintHeaderMessage(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(message);
+            Console.ResetColor();
+        }
+
+        public static void PrintOrdinaryMessage(string message)
+        {
+            Console.WriteLine(message);
         }
     }
 }
