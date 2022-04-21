@@ -3,12 +3,14 @@
     public class GameFieldData
     {
         public readonly int[,] gameFieldArray;
+        //public static int IterationCount = 0;
         public GameFieldData()
         {
             int rows = UserComunicator.GetInputValueRanged("Enter row count", 5, 50);
             int colums = UserComunicator.GetInputValueRanged("Enter colum count", 5, 50);
             gameFieldArray = new int[rows, colums];
             CellPopulator.RandomizeCells(gameFieldArray);
+
         }
 
         /// <summary>
@@ -104,6 +106,19 @@
                 }
             }
         }
+
+        
+        //public void IterationMessage()
+        //{
+        //    IterationCount++;
+        //    Console.WriteLine("Iteration " + IterationCount + "\n");
+        //}
+
+        //public void LiveCellsMessage(int[,] gameFieldArray)
+        //{
+        //    CellStateChecker calculateAliveCells = new CellStateChecker();
+        //    Console.WriteLine("Live cell count  " + calculateAliveCells.AliveCellsInCurrentIteration(gameFieldArray) + "  ");
+        //}
     }
 }
 

@@ -10,8 +10,8 @@ namespace GameOfLife
         public void PrintArray(int[,] gameField)
         {
             Console.SetCursorPosition(0, 0);
-            UserMessages.LiveCellsMessage(gameField);
-            UserMessages.IterationMessage();
+            UserComunicator.PrintHeaderMessage(Repository.LiveCellCountMessage + CellStateChecker.AliveCellsInCurrentIteration(gameField));
+            UserComunicator.PrintHeaderMessage(Repository.IteratorMessage + CellStateChecker.IterationCounter());
 
             for (int i = 0; i < gameField.GetLength(0); i++)
             {
@@ -22,9 +22,6 @@ namespace GameOfLife
                 }
                 Console.WriteLine("");
             }
-
-
-
         }
     }
 }

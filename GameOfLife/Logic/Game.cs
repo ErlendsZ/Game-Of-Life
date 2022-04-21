@@ -12,7 +12,6 @@ namespace GameOfLife
         {
             while (true)
             {
-              
                 int choice = UserComunicator.GetInputValueRanged(Repository.MainMenuMessage, 1, 3);
 
                 switch (choice)
@@ -37,7 +36,7 @@ namespace GameOfLife
 
         public void ExecuteNewGame()
         {
-            UserMessages.i = 0;
+            CellStateChecker.iterationCount = 0;
             GameFieldData gameFieldData = new GameFieldData();
             Renderer renderer = new Renderer();
             while (!Console.KeyAvailable)
