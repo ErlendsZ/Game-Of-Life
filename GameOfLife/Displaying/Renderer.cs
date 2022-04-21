@@ -17,10 +17,10 @@ namespace GameOfLife
             {
                 for (int j = 0; j < gameField.GetLength(1); j++)
                 {
-                    Logger.Write(gameField[i, j] == 0 ? "." : "X");
+                    Console.Write(gameField[i, j] == 0 ? "." : "X");
 
                 }
-                Logger.WriteLine("");
+                Console.WriteLine("");
             }
 
 
