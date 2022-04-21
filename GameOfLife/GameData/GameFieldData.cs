@@ -21,7 +21,6 @@
         ///  4)Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
         /// </summary>
         /// <param name="gameField">Passing previous generation of array for next generation cell calculation</param>
-
         public void GetNextGeneration()
         {
             int lenght = gameFieldArray.GetLength(0);
@@ -106,19 +105,6 @@
                 }
             }
         }
-
-        
-        //public void IterationMessage()
-        //{
-        //    IterationCount++;
-        //    Console.WriteLine("Iteration " + IterationCount + "\n");
-        //}
-
-        //public void LiveCellsMessage(int[,] gameFieldArray)
-        //{
-        //    CellStateChecker calculateAliveCells = new CellStateChecker();
-        //    Console.WriteLine("Live cell count  " + calculateAliveCells.AliveCellsInCurrentIteration(gameFieldArray) + "  ");
-        //}
     }
 }
 

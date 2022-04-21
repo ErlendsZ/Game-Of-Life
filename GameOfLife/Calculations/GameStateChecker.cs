@@ -1,6 +1,6 @@
 ﻿namespace GameOfLife
 {
-    public class CellStateChecker
+    public class GameStateChecker
     {
         public static int iterationCount = 0;
         public static int AliveCellsInCurrentIteration(int[,] gameFieldArray)

@@ -31,12 +31,11 @@ namespace GameOfLife
                         break;
                 }
             }
-           
         }
 
         public void ExecuteNewGame()
         {
-            CellStateChecker.iterationCount = 0;
+            GameStateChecker.iterationCount = 0;
             GameFieldData gameFieldData = new GameFieldData();
             Renderer renderer = new Renderer();
             while (!Console.KeyAvailable)
