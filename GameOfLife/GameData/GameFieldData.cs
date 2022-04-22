@@ -3,7 +3,6 @@
     public class GameFieldData
     {
         public readonly int[,] gameFieldArray;
-        //public static int IterationCount = 0;
         public GameFieldData()
         {
             int rows = UserComunicator.GetInputValueRanged("Enter row count", 5, 50);

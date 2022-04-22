@@ -4,9 +4,10 @@ namespace GameOfLife
     public class Renderer
     {
        /// <summary>
-       /// 
+       /// Renders GameField array
+       /// and related message to it every iteration
        /// </summary>
-       /// <param name="gameField"></param>
+       /// <param name="gameField">current generation of game array array</param>
         public void PrintArray(int[,] gameField)
         {
             Console.SetCursorPosition(0, 0);

@@ -8,6 +8,9 @@ namespace GameOfLife
 {
     public class Game
     {
+        /// <summary>
+        /// Contains, high level game logic for proper execution of game
+        /// </summary>
         public void Run()
         {
             while (true)
