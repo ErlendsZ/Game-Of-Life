@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameOfLife
+﻿namespace GameOfLife
 {
     public class Game
     {
@@ -17,7 +11,7 @@ namespace GameOfLife
         /// </summary>
         public void Run()
         {
-            GameHandler dataSaver = new GameHandler();
+           
 
             while (true)
             {
@@ -30,7 +24,7 @@ namespace GameOfLife
                         break;
                     case 2:
                         //gameFieldData = dataSaver.LoadData(gameFieldData);
-                        dataSaver.SaveData(gameFieldData);
+                        GameHandler.SaveData(gameFieldData);
                         AdvanceExistingGame();
                         UserComunicator.PrintOrdinaryMessage(Repository.PressKeyMessage);
                         Console.ReadKey();
@@ -44,19 +38,39 @@ namespace GameOfLife
         }
 
         public void ExecuteNewGame()
-        { 
+        {
             GameStateChecker.iterationCount = 0;
-            gameFieldData = new GameFieldData();
+            gameFieldData = new GameFieldData(true);
             AdvanceExistingGame();
         }
 
         public void AdvanceExistingGame()
         {
-            while (!Console.KeyAvailable)
+            bool isGameOn = true;
+
+            if (gameFieldData == null)
+            {
+                return;
+            }
+
+            while (isGameOn)
             {
                 renderer.PrintArray(gameFieldData.gameFieldArray);
                 gameFieldData.GetNextGeneration();
-                //Monitor key press function
+                ConsoleKey key = UserComunicator.KeyPressed();
+                switch (key)
+                {
+                    case ConsoleKey.S:
+                        GameHandler.SaveData(gameFieldData);
+                        break;
+                    case ConsoleKey.Q:
+                    case ConsoleKey.Escape:
+                        isGameOn = false;
+                        break;
+                    case ConsoleKey.L:
+                        gameFieldData = GameHandler.LoadGame();
+                        break;
+                }
                 Thread.Sleep(1000);
             }
 

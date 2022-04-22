@@ -21,7 +21,7 @@
             return aliveCells;
         }
 
-        public  static int IterationCounter()
+        public static int IterationCounter()
         {
             iterationCount++;
             return iterationCount;

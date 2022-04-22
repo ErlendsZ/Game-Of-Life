@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameOfLife
+﻿namespace GameOfLife
 {
     public static class Repository
     {
@@ -13,7 +7,7 @@ namespace GameOfLife
         public const string OutOfRangeMessage = "Selected number is too high or low!";
         public const string MainMenuMessage = "1.Start New Game. \n2.Load Game. \n3.Quit Game";
         public const string IteratorMessage = "Iteration: ";
-        public const string LiveCellCountMessageFirstPart = "There are currently: " ;
+        public const string LiveCellCountMessageFirstPart = "There are currently: ";
         public const string LiveCellCountMessageSecondPart = " Live Cells ";
         public const string QuitGameMessage = " You quit the game :( ";
         public const string DataFileName = "GameOfLife.data";

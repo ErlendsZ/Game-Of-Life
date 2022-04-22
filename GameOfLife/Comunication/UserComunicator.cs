@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameOfLife
+﻿namespace GameOfLife
 {
     public static class UserComunicator
     {
@@ -84,6 +78,17 @@ namespace GameOfLife
         public static void PrintOrdinaryMessage(string message)
         {
             Console.WriteLine(message);
+        }
+
+        public static ConsoleKey KeyPressed()
+        {
+            if (Console.KeyAvailable)
+            {
+                var keyInfo = System.Console.ReadKey(true);
+                return keyInfo.Key;
+            }
+            return ConsoleKey.Clear;
+           
         }
     }
 }

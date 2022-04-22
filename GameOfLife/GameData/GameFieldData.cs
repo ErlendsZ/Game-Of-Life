@@ -3,14 +3,20 @@
     [Serializable]
     public class GameFieldData
     {
-        public int[,] gameFieldArray;
-        public GameFieldData()
+        public int[,]? gameFieldArray;
+        public GameFieldData(bool initialize)
         {
             int rows = UserComunicator.GetInputValueRanged("Enter row count", 5, 50);
             int colums = UserComunicator.GetInputValueRanged("Enter colum count", 5, 50);
             gameFieldArray = new int[rows, colums];
-            CellPopulator.RandomizeCells(gameFieldArray);
+            if (initialize)
+            {
+                CellPopulator.RandomizeCells(gameFieldArray);
+            }
+        }
 
+        public GameFieldData()
+        {
         }
 
         /// <summary>
