@@ -8,12 +8,17 @@ namespace GameOfLife
 {
     public class Game
     {
+        GameFieldData? gameFieldData;
+        Renderer renderer = new Renderer();
+
         /// <summary>
-        /// Contains, high level game logic for proper 
+        /// Contains, high level game request logic for proper 
         /// execution of game of life
         /// </summary>
         public void Run()
         {
+            GameHandler dataSaver = new GameHandler();
+
             while (true)
             {
                 int choice = UserComunicator.GetInputValueRanged(Repository.MainMenuMessage, 1, 3);
@@ -24,7 +29,9 @@ namespace GameOfLife
                         ExecuteNewGame();
                         break;
                     case 2:
-                        UserComunicator.PrintErrorMessage("Not Implemented");
+                        //gameFieldData = dataSaver.LoadData(gameFieldData);
+                        dataSaver.SaveData(gameFieldData);
+                        AdvanceExistingGame();
                         UserComunicator.PrintOrdinaryMessage(Repository.PressKeyMessage);
                         Console.ReadKey();
                         break;
@@ -37,16 +44,22 @@ namespace GameOfLife
         }
 
         public void ExecuteNewGame()
-        {
+        { 
             GameStateChecker.iterationCount = 0;
-            GameFieldData gameFieldData = new GameFieldData();
-            Renderer renderer = new Renderer();
+            gameFieldData = new GameFieldData();
+            AdvanceExistingGame();
+        }
+
+        public void AdvanceExistingGame()
+        {
             while (!Console.KeyAvailable)
             {
                 renderer.PrintArray(gameFieldData.gameFieldArray);
                 gameFieldData.GetNextGeneration();
+                //Monitor key press function
                 Thread.Sleep(1000);
             }
+
         }
     }
 }

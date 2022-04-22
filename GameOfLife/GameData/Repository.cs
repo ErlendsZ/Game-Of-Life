@@ -16,5 +16,6 @@ namespace GameOfLife
         public const string LiveCellCountMessageFirstPart = "There are currently: " ;
         public const string LiveCellCountMessageSecondPart = " Live Cells ";
         public const string QuitGameMessage = " You quit the game :( ";
+        public const string DataFileName = "GameOfLife.data";
     }
 }

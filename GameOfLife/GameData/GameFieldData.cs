@@ -1,8 +1,9 @@
 ﻿namespace GameOfLife
 {
+    [Serializable]
     public class GameFieldData
     {
-        public readonly int[,] gameFieldArray;
+        public int[,] gameFieldArray;
         public GameFieldData()
         {
             int rows = UserComunicator.GetInputValueRanged("Enter row count", 5, 50);

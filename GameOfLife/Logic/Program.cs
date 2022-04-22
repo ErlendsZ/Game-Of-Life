@@ -1,5 +1,9 @@
 ﻿
 using GameOfLife;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
+
 
 public class Program
 {
@@ -8,7 +12,9 @@ public class Program
         Game game = new Game();
         game.Run();
     }
+
 }
+
 
 
 
