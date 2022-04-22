@@ -15,5 +15,6 @@ namespace GameOfLife
         public const string IteratorMessage = "Iteration: ";
         public const string LiveCellCountMessageFirstPart = "There are currently: " ;
         public const string LiveCellCountMessageSecondPart = " Live Cells ";
+        public const string QuitGameMessage = " You quit the game :( ";
     }
 }

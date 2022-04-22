@@ -74,6 +74,13 @@ namespace GameOfLife
             Console.ResetColor();
         }
 
+        public static void PrintWarningMessage(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(message);
+            Console.ResetColor();
+        }
+
         public static void PrintOrdinaryMessage(string message)
         {
             Console.WriteLine(message);

@@ -9,7 +9,8 @@ namespace GameOfLife
     public class Game
     {
         /// <summary>
-        /// Contains, high level game logic for proper execution of game
+        /// Contains, high level game logic for proper 
+        /// execution of game of life
         /// </summary>
         public void Run()
         {
@@ -28,9 +29,8 @@ namespace GameOfLife
                         Console.ReadKey();
                         break;
                     case 3:
-                        UserComunicator.PrintHeaderMessage("dogee");
-                        UserComunicator.PrintOrdinaryMessage(Repository.PressKeyMessage);
-                        Console.ReadKey();
+                        UserComunicator.PrintWarningMessage(Repository.QuitGameMessage);
+                        Environment.Exit(0);
                         break;
                 }
             }
