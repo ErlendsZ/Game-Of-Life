@@ -68,10 +68,10 @@
                         isGameOn = false;
                         break;
                     case ConsoleKey.L:
-                        GameStateChecker.iterationCount = savedIteration-2;
+                        GameStateChecker.iterationCount = savedIteration-1;
                         gameFieldData = GameHandler.LoadGame();
                         isLoaded = true;
-                        renderer.PrintArray(gameFieldData.gameFieldArray);
+                       // renderer.PrintArray(gameFieldData.gameFieldArray);
                         break;
                         default:
                         if (isLoaded == false)
