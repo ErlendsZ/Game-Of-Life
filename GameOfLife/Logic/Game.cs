@@ -49,7 +49,7 @@
             {
                 return;
             }
-            
+
             while (isGameOn)
             {
                 bool isLoaded = false;
@@ -57,7 +57,7 @@
                 renderer.PrintArray(gameFieldData.gameFieldArray);
                 Thread.Sleep(1000);
                 ConsoleKey key = UserComunicator.KeyPressed();
-               
+
                 switch (key)
                 {
                     case ConsoleKey.S:
@@ -69,15 +69,15 @@
                         isGameOn = false;
                         break;
                     case ConsoleKey.L:
-                        GameStateChecker.iterationCount = currentIteration-1;
+                        GameStateChecker.iterationCount = currentIteration - 1;
                         gameFieldData = GameHandler.LoadGame();
                         break;
-                        default:
+                    default:
                         if (isLoaded == false)
-                        gameFieldData.GetNextGeneration();
+                            gameFieldData.GetNextGeneration();
                         break;
                 }
-               
+
             }
         }
     }

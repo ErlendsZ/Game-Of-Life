@@ -11,14 +11,13 @@
             gameFieldArray = new int[rows, colums];
             if (initialize)
             {
-                //CellPopulator.RandomizeCells(gameFieldArray);
-                CellPopulator.GliderCreation(gameFieldArray);
+                CellPopulator.RandomizeCells(gameFieldArray);
             }
         }
 
         public GameFieldData()
         {
-          
+
         }
 
         /// <summary>
