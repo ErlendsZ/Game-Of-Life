@@ -34,26 +34,26 @@
 
         public void ExecuteNewGame()
         {
-            GameStateChecker.iterationCount = 0;
             gameFieldData = new GameFieldData(true);
             AdvanceExistingGame();
         }
 
         public void AdvanceExistingGame()
         {
+            GameStateChecker.iterationCount--;
+
             bool isGameOn = true;
-            
-            int savedIteration = 0;
+            int currentIteration = 0;
 
             if (gameFieldData == null)
             {
                 return;
             }
             
-            
             while (isGameOn)
             {
                 bool isLoaded = false;
+
                 renderer.PrintArray(gameFieldData.gameFieldArray);
                 Thread.Sleep(1000);
                 ConsoleKey key = UserComunicator.KeyPressed();
@@ -61,17 +61,16 @@
                 switch (key)
                 {
                     case ConsoleKey.S:
-                        savedIteration = GameHandler.SaveData(gameFieldData);
+                        currentIteration = GameHandler.SaveData(gameFieldData);
+                        GameStateChecker.iterationCount--;
                         break;
                     case ConsoleKey.Q:
                     case ConsoleKey.Escape:
                         isGameOn = false;
                         break;
                     case ConsoleKey.L:
-                        GameStateChecker.iterationCount = savedIteration-1;
+                        GameStateChecker.iterationCount = currentIteration-1;
                         gameFieldData = GameHandler.LoadGame();
-                        isLoaded = true;
-                       // renderer.PrintArray(gameFieldData.gameFieldArray);
                         break;
                         default:
                         if (isLoaded == false)
