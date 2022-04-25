@@ -9,11 +9,6 @@ public class Program
     {
         Game game = new Game();
         game.Run();
-
-        //Thread.Sleep(5000);
-        //var Key = UserComunicator.KeyPressed();
-        //Console.WriteLine(Key.ToString());
-        //Console.ReadKey();
     }
 
 }

@@ -11,8 +11,6 @@
         /// </summary>
         public void Run()
         {
-           
-
             while (true)
             {
                 int choice = UserComunicator.GetInputValueRanged(Repository.MainMenuMessage, 1, 3);
@@ -55,8 +53,9 @@
 
             while (isGameOn)
             {
-                renderer.PrintArray(gameFieldData.gameFieldArray);
+                renderer.PrintArray(GameFieldData.gameFieldArray);
                 gameFieldData.GetNextGeneration();
+                UserComunicator.PrintWarningMessage(Repository.ExitSaveMessage);
                 ConsoleKey key = UserComunicator.KeyPressed();
                 switch (key)
                 {
@@ -68,7 +67,9 @@
                         isGameOn = false;
                         break;
                     case ConsoleKey.L:
-                        gameFieldData = GameHandler.LoadGame();
+                        //gameFieldData = GameHandler.LoadGame();
+                        GameHandler.LoadGame();
+                       // GameFieldData.gameFieldArray = GameHandler.LoadGame();
                         break;
                 }
                 Thread.Sleep(1000);

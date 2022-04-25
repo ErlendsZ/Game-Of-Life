@@ -12,25 +12,39 @@ namespace GameOfLife
         //SavedObjects LoadState = null;
         public static void SaveData(GameFieldData gameFieldData)
         {
+            DataSerialization dataSerializer = new DataSerialization();
+            GameFieldData Field = gameFieldData;
 
-            //GameFieldData Field = gameFieldData;
-            //SavedObjects person = new SavedObjects()
-            ////{  Iteration = GameStateChecker.iterationCount, GameFieldData Field};
+            SavedObjects savedObjects = new SavedObjects()
+            { Iteration = GameStateChecker.iterationCount, gameField = GameFieldData.gameFieldArray };
+            //{  Iteration = GameStateChecker.iterationCount, GameFieldData Field};
             //{ Iteration = GameStateChecker.iterationCount, Field = gameFieldData };
 
-            ////dataSerializer.BinarySerialize(person, Repository.DataFileName);
+            dataSerializer.BinarySerialize(savedObjects, Repository.DataFileName);
 
         }
 
-        public static GameFieldData LoadGame()
+        public static int [,] LoadGame()
         {
-            GameFieldData gameFieldData = new GameFieldData();
+            //GameFieldData gameFieldData = new GameFieldData;
 
             ///// read from file object 
-            //LoadState = dataSerializer.BinaryDeserialize(Repository.DataFileName) as SavedObjects;
-            //UserComunicator.PrintErrorMessage(Repository.IteratorMessage + LoadState.Iteration);
-            //Console.WriteLine(LoadState.Field);
-            return gameFieldData;
+            DataSerialization dataSerializer = new DataSerialization();
+            SavedObjects LoadState = null;
+            LoadState = dataSerializer.BinaryDeserialize(Repository.DataFileName) as SavedObjects;
+            UserComunicator.PrintErrorMessage(Repository.IteratorMessage + LoadState.Iteration );
+
+            for (int i = 0; i < LoadState.gameField.GetLength(0); i++)
+            {
+                for (int j = 0; j < LoadState.gameField.GetLength(1); j++)
+                {
+                    Console.Write(LoadState.gameField[i, j] == 0 ? "." : "X");
+
+                }
+                Console.WriteLine("");
+            }
+
+            return LoadState.gameField;
         }
 
     }

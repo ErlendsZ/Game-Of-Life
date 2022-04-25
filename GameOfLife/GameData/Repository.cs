@@ -11,5 +11,6 @@
         public const string LiveCellCountMessageSecondPart = " Live Cells ";
         public const string QuitGameMessage = " You quit the game :( ";
         public const string DataFileName = "GameOfLife.data";
+        public const string ExitSaveMessage = "Press ESC to exit to main menu or S to save game state";
     }
 }
