@@ -14,9 +14,6 @@ namespace GameOfLife
     {
         public GameFieldData? gameFieldData;
         public int Iteration = GameStateChecker.iterationCount;
-        public int [,] gameField = GameFieldData.gameFieldArray;
-
-        public GameFieldData? gameFieldArray;
     }
    
 }

@@ -3,7 +3,7 @@
     [Serializable]
     public class GameFieldData
     {
-        public static int[,]? gameFieldArray;
+        public int[,]? gameFieldArray;
         public GameFieldData(bool initialize)
         {
             int rows = UserComunicator.GetInputValueRanged("Enter row count", 5, 50);
@@ -11,7 +11,8 @@
             gameFieldArray = new int[rows, colums];
             if (initialize)
             {
-                CellPopulator.RandomizeCells(gameFieldArray);
+                //CellPopulator.RandomizeCells(gameFieldArray);
+                CellPopulator.GliderCreation(gameFieldArray);
             }
         }
 

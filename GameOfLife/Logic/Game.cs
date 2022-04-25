@@ -21,11 +21,8 @@
                         ExecuteNewGame();
                         break;
                     case 2:
-                        //gameFieldData = dataSaver.LoadData(gameFieldData);
-                        GameHandler.SaveData(gameFieldData);
                         AdvanceExistingGame();
                         UserComunicator.PrintOrdinaryMessage(Repository.PressKeyMessage);
-                        Console.ReadKey();
                         break;
                     case 3:
                         UserComunicator.PrintWarningMessage(Repository.QuitGameMessage);
@@ -45,36 +42,44 @@
         public void AdvanceExistingGame()
         {
             bool isGameOn = true;
+            
+            int savedIteration = 0;
 
             if (gameFieldData == null)
             {
                 return;
             }
-
+            
+            
             while (isGameOn)
             {
-                renderer.PrintArray(GameFieldData.gameFieldArray);
-                gameFieldData.GetNextGeneration();
-                UserComunicator.PrintWarningMessage(Repository.ExitSaveMessage);
+                bool isLoaded = false;
+                renderer.PrintArray(gameFieldData.gameFieldArray);
+                Thread.Sleep(1000);
                 ConsoleKey key = UserComunicator.KeyPressed();
+               
                 switch (key)
                 {
                     case ConsoleKey.S:
-                        GameHandler.SaveData(gameFieldData);
+                        savedIteration = GameHandler.SaveData(gameFieldData);
                         break;
                     case ConsoleKey.Q:
                     case ConsoleKey.Escape:
                         isGameOn = false;
                         break;
                     case ConsoleKey.L:
-                        //gameFieldData = GameHandler.LoadGame();
-                        GameHandler.LoadGame();
-                       // GameFieldData.gameFieldArray = GameHandler.LoadGame();
+                        GameStateChecker.iterationCount = savedIteration-2;
+                        gameFieldData = GameHandler.LoadGame();
+                        isLoaded = true;
+                        renderer.PrintArray(gameFieldData.gameFieldArray);
+                        break;
+                        default:
+                        if (isLoaded == false)
+                        gameFieldData.GetNextGeneration();
                         break;
                 }
-                Thread.Sleep(1000);
+               
             }
-
         }
     }
 }

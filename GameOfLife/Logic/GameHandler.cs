@@ -8,44 +8,27 @@ namespace GameOfLife
 {
     public static class GameHandler
     {
-        //DataSerialization dataSerializer = new DataSerialization();
-        //SavedObjects LoadState = null;
-        public static void SaveData(GameFieldData gameFieldData)
+        public static int SaveData(GameFieldData gameFieldData)
         {
             DataSerialization dataSerializer = new DataSerialization();
             GameFieldData Field = gameFieldData;
-
             SavedObjects savedObjects = new SavedObjects()
-            { Iteration = GameStateChecker.iterationCount, gameField = GameFieldData.gameFieldArray };
-            //{  Iteration = GameStateChecker.iterationCount, GameFieldData Field};
-            //{ Iteration = GameStateChecker.iterationCount, Field = gameFieldData };
+            { Iteration = GameStateChecker.iterationCount, gameFieldData = Field };
 
             dataSerializer.BinarySerialize(savedObjects, Repository.DataFileName);
+            UserComunicator.PrintWarningMessage(Repository.SavedIterationMessage + savedObjects.Iteration);
 
+            return savedObjects.Iteration;
         }
 
-        public static int [,] LoadGame()
+        public static GameFieldData LoadGame()
         {
-            //GameFieldData gameFieldData = new GameFieldData;
-
-            ///// read from file object 
             DataSerialization dataSerializer = new DataSerialization();
-            SavedObjects LoadState = null;
-            LoadState = dataSerializer.BinaryDeserialize(Repository.DataFileName) as SavedObjects;
-            UserComunicator.PrintErrorMessage(Repository.IteratorMessage + LoadState.Iteration );
+            SavedObjects savedObjects = null;
+            savedObjects = dataSerializer.BinaryDeserialize(Repository.DataFileName) as SavedObjects;
+            UserComunicator.PrintWarningMessage(Repository.LoadedIterationMessage + savedObjects.Iteration);
 
-            for (int i = 0; i < LoadState.gameField.GetLength(0); i++)
-            {
-                for (int j = 0; j < LoadState.gameField.GetLength(1); j++)
-                {
-                    Console.Write(LoadState.gameField[i, j] == 0 ? "." : "X");
-
-                }
-                Console.WriteLine("");
-            }
-
-            return LoadState.gameField;
+            return savedObjects.gameFieldData;
         }
-
     }
 }

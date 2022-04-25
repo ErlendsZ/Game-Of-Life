@@ -23,6 +23,8 @@ namespace GameOfLife
                 }
                 Console.WriteLine("");
             }
+
+            UserComunicator.PrintWarningMessage(Repository.ExitSaveMessage);
         }
     }
 }
