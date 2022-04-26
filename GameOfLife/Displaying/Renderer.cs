@@ -12,7 +12,7 @@ namespace GameOfLife
         {
             Console.SetCursorPosition(0, 0);
             UserComunicator.PrintHeaderMessage(Repository.LiveCellCountMessageFirstPart + GameStateChecker.AliveCellsInCurrentIteration(gameField) + Repository.LiveCellCountMessageSecondPart);
-            UserComunicator.PrintHeaderMessage(Repository.IteratorMessage + GameStateChecker.IterationCounter());
+            UserComunicator.PrintHeaderMessage(Repository.IteratorMessageFirstPart + GameStateChecker.IterationCounter() + Repository.IteratorMessageSecondPart);
 
             for (int i = 0; i < gameField.GetLength(0); i++)
             {
@@ -23,6 +23,8 @@ namespace GameOfLife
                 }
                 Console.WriteLine("");
             }
+
+            UserComunicator.PrintWarningMessage(Repository.ExitSaveMessage);
         }
     }
 }

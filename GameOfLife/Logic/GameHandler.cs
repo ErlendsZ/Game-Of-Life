@@ -8,30 +8,42 @@ namespace GameOfLife
 {
     public static class GameHandler
     {
-        //DataSerialization dataSerializer = new DataSerialization();
-        //SavedObjects LoadState = null;
         public static void SaveData(GameFieldData gameFieldData)
         {
+            DataSerialization dataSerializer = new DataSerialization();
+            GameFieldData Field = gameFieldData;
+            SavedObjects savedObjects = new SavedObjects()
+            { Iteration = GameStateChecker.iterationCount, gameFieldData = Field };
 
-            //GameFieldData Field = gameFieldData;
-            //SavedObjects person = new SavedObjects()
-            ////{  Iteration = GameStateChecker.iterationCount, GameFieldData Field};
-            //{ Iteration = GameStateChecker.iterationCount, Field = gameFieldData };
-
-            ////dataSerializer.BinarySerialize(person, Repository.DataFileName);
-
+            dataSerializer.BinarySerialize(savedObjects, Repository.DataFileName);
+            UserComunicator.PrintWarningMessage(Repository.SavedIterationMessageFirstPart + savedObjects.Iteration + Repository.LoadedSavedMessageSecondPart);
         }
 
+        /// <summary>
+        /// Loads serilized data
+        /// </summary>
+        /// <returns>gameField (array of cells) data to be passed for next iterations</returns>
         public static GameFieldData LoadGame()
         {
-            GameFieldData gameFieldData = new GameFieldData();
-
-            ///// read from file object 
-            //LoadState = dataSerializer.BinaryDeserialize(Repository.DataFileName) as SavedObjects;
-            //UserComunicator.PrintErrorMessage(Repository.IteratorMessage + LoadState.Iteration);
-            //Console.WriteLine(LoadState.Field);
-            return gameFieldData;
+            DataSerialization dataSerializer = new DataSerialization();
+            SavedObjects? savedObjects = null;
+            savedObjects = dataSerializer.BinaryDeserialize(Repository.DataFileName) as SavedObjects;
+            UserComunicator.PrintWarningMessage(Repository.LoadedIterationMessageFirstPart + savedObjects?.Iteration + Repository.LoadedSavedMessageSecondPart);
+            
+            return savedObjects.gameFieldData;
         }
 
+        /// <summary>
+        /// Loads iteration data
+        /// </summary>
+        /// <returns>Number of curent iteration, used for proper counting of
+        /// itterator when loading/saving game</returns>
+        public static int LoadIteration()
+        {
+            DataSerialization dataSerializer = new DataSerialization();
+            SavedObjects? savedObjects = null;
+            savedObjects = dataSerializer.BinaryDeserialize(Repository.DataFileName) as SavedObjects;
+            return savedObjects.Iteration;
+        }
     }
 }

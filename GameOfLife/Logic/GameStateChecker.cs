@@ -2,7 +2,7 @@
 {
     public class GameStateChecker
     {
-        public static int iterationCount = 0;
+        public static int iterationCount = 1;
         public static int AliveCellsInCurrentIteration(int[,] gameFieldArray)
         {
             int aliveCells = 0;
