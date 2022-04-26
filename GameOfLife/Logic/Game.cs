@@ -34,6 +34,8 @@
 
         public void ExecuteNewGame()
         {
+
+            GameStateChecker.iterationCount = 1;
             gameFieldData = new GameFieldData(true);
             AdvanceExistingGame();
         }
@@ -43,12 +45,13 @@
             GameStateChecker.iterationCount--;
 
             bool isGameOn = true;
-            int currentIteration = 0;
+            
 
             if (gameFieldData == null)
             {
                 return;
             }
+            
 
             while (isGameOn)
             {
@@ -57,11 +60,11 @@
                 renderer.PrintArray(gameFieldData.gameFieldArray);
                 Thread.Sleep(1000);
                 ConsoleKey key = UserComunicator.KeyPressed();
-
+               
                 switch (key)
                 {
                     case ConsoleKey.S:
-                        currentIteration = GameHandler.SaveData(gameFieldData);
+                        GameHandler.SaveData(gameFieldData);
                         GameStateChecker.iterationCount--;
                         break;
                     case ConsoleKey.Q:
@@ -69,15 +72,16 @@
                         isGameOn = false;
                         break;
                     case ConsoleKey.L:
-                        GameStateChecker.iterationCount = currentIteration - 1;
+                        GameStateChecker.iterationCount = GameHandler.LoadIteration()-1;
                         gameFieldData = GameHandler.LoadGame();
+                        Thread.Sleep(500);
+                        Console.Clear();
                         break;
-                    default:
+                        default:
                         if (isLoaded == false)
-                            gameFieldData.GetNextGeneration();
+                        gameFieldData.GetNextGeneration();
                         break;
                 }
-
             }
         }
     }

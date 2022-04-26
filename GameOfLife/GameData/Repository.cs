@@ -8,7 +8,7 @@
         public const string MainMenuMessage = "1.Start New Game. \n2.Continue. \n3.Quit Game";
         public const string IteratorMessageFirstPart = "Iteration: ";
         public const string IteratorMessageSecondPart = " in Game Of Life";
-        public const string LoadedIterationMessageFirstPart = "Loaded Iteration: ";
+        public const string LoadedIterationMessageFirstPart = "Loading Iteration: ";
         public const string SavedIterationMessageFirstPart = "Saved Iteration: ";
         public const string LoadedSavedMessageSecondPart = " of Game Of Life";
         public const string LiveCellCountMessageFirstPart = "There are currently: ";

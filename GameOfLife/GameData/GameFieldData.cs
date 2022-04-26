@@ -17,7 +17,7 @@
 
         public GameFieldData()
         {
-
+          
         }
 
         /// <summary>
