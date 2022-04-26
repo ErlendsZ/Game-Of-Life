@@ -8,7 +8,9 @@ using System.Xml;
 
 namespace GameOfLife
 {
-    // object to serialize in binary format
+    /// <summary>
+    /// Objects to serialize in binary format.
+    /// </summary>
     [Serializable]
     public class SavedObjects 
     {

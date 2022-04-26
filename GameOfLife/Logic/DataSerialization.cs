@@ -16,8 +16,8 @@ namespace GameOfLife
         /// <summary>
         /// Serializes file into file path
         /// </summary>
-        /// <param name="data"></param>
-        /// <param name="filePath"></param>
+        /// <param name="data">objects to serialize</param>
+        /// <param name="filePath">relative location of seriliazation file</param>
         public void BinarySerialize(object data, string filePath)
         {
             FileStream fileStream;
@@ -29,6 +29,11 @@ namespace GameOfLife
             fileStream.Close();
         }
 
+        /// <summary>
+        /// Deserializes content
+        /// </summary>
+        /// <param name="filePath"> Location of saved binary file</param>
+        /// <returns></returns>
         public object BinaryDeserialize(string filePath)
         {
             object obj = null;

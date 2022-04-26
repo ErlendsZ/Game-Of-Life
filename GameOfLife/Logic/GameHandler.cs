@@ -19,6 +19,10 @@ namespace GameOfLife
             UserComunicator.PrintWarningMessage(Repository.SavedIterationMessageFirstPart + savedObjects.Iteration + Repository.LoadedSavedMessageSecondPart);
         }
 
+        /// <summary>
+        /// Loads serilized data
+        /// </summary>
+        /// <returns>gameField (array of cells) data to be passed for next iterations</returns>
         public static GameFieldData LoadGame()
         {
             DataSerialization dataSerializer = new DataSerialization();
@@ -29,6 +33,11 @@ namespace GameOfLife
             return savedObjects.gameFieldData;
         }
 
+        /// <summary>
+        /// Loads iteration data
+        /// </summary>
+        /// <returns>Number of curent iteration, used for proper counting of
+        /// itterator when loading/saving game</returns>
         public static int LoadIteration()
         {
             DataSerialization dataSerializer = new DataSerialization();

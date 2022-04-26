@@ -1,7 +1,12 @@
 ﻿namespace GameOfLife
 {
+    /// <summary>
+    /// Repository of all text messages presented to user
+    /// </summary>
     public static class Repository
     {
+        public const string EnterCollumsCountMessage = "Enter collum count: ";
+        public const string EnterRowsCountMessage = "Enter row count: ";
         public const string PressKeyMessage = "Press any key to continue.";
         public const string NotNumberMessage = "Input must be a number!";
         public const string OutOfRangeMessage = "Selected number is too high or low!";

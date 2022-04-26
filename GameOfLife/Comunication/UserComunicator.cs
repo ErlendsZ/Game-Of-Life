@@ -54,6 +54,10 @@
             }
         }
 
+        /// <summary>
+        /// Visualy modifies text messages based on their use.
+        /// </summary>
+        /// <param name="message">Text message passed form repository</param>
         public static void PrintErrorMessage(string message)
         {
             Console.ForegroundColor = ConsoleColor.Red;
