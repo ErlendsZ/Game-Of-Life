@@ -26,8 +26,10 @@ namespace GameOfLife
         public object LoadData()
         {
             SavedObjects savedObjects = dataSerialization.BinaryDeserialize(Repository.DataFileName, dataSerialization) as SavedObjects;
-            UserComunicator.PrintWarningMessage(Repository.LoadedIterationMessage, savedObjects.Iteration);
-            
+            if (savedObjects == null)
+                UserComunicator.PrintErrorMessage(Repository.UnsuccessfulDeserializationMessage);
+            else
+                UserComunicator.PrintWarningMessage(Repository.LoadedIterationMessage, savedObjects.Iteration);
             return savedObjects;
         }
     }

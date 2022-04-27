@@ -39,14 +39,16 @@ namespace GameOfLife
         {
             FileStream fileStream;
             BinaryFormatter formatter = new BinaryFormatter();
+          
             if (File.Exists(filePath))
             {
                 fileStream = File.OpenRead(filePath);
                 savedData = formatter.Deserialize(fileStream);
                 fileStream.Close();
+                return savedData;
             }
-            return savedData;
-        }
 
+            return null;
+        }
     }
 }

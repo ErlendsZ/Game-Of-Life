@@ -22,7 +22,6 @@
                         break;
                     case 2:
                         AdvanceExistingGame();
-                        UserComunicator.PrintOrdinaryMessage(Repository.PressKeyMessage);
                         break;
                     case 3:
                         UserComunicator.PrintWarningMessage(Repository.QuitGameMessage, 0);
@@ -60,14 +59,14 @@
             SavedObjects savedObjects = new SavedObjects();
             GameHandler gameHandler = new GameHandler();
             bool isGameOn = true;
-            
 
             if (gameFieldData == null)
             {
+                UserComunicator.PrintErrorMessage(Repository.UnsuccessfulContinueMessage);
+                Thread.Sleep(1000);
                 return;
             }
             
-
             while (isGameOn)
             {
                 bool isLoaded = false;
@@ -88,8 +87,13 @@
                         break;
                     case ConsoleKey.L:
                         object savedData = gameHandler.LoadData();
+                        if(savedData == null)
+                        {
+                            GameStateChecker.iterationCount -= 1;
+                            break;
+                        }
                         savedObjects = (SavedObjects)savedData;
-                        GameStateChecker.iterationCount = savedObjects.Iteration -1;
+                        GameStateChecker.iterationCount = savedObjects.Iteration - 1;
                         gameFieldData = savedObjects.GameFieldData;
                         Thread.Sleep(500);
                         Console.Clear();

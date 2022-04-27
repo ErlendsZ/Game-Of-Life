@@ -77,11 +77,6 @@
             Console.ResetColor();
         }
 
-        public static void PrintOrdinaryMessage(string message)
-        {
-            Console.WriteLine(message);
-        }
-
         public static ConsoleKey KeyPressed()
         {
             if (Console.KeyAvailable)
