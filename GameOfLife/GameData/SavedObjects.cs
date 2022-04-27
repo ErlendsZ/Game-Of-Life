@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-
-
+﻿
 namespace GameOfLife
 {
     /// <summary>
@@ -14,7 +7,7 @@ namespace GameOfLife
     [Serializable]
     public class SavedObjects 
     {
-        public GameFieldData? gameFieldData;
+        public GameFieldData? GameFieldData;
         public int Iteration = GameStateChecker.iterationCount;
     }
    

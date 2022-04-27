@@ -2,8 +2,8 @@
 {
     public class Game
     {
-        GameFieldData? gameFieldData;
-        Renderer renderer = new Renderer();
+        private GameFieldData? gameFieldData;
+        private Renderer renderer = new Renderer();
 
         /// <summary>
         /// Main menu of game, which, high level game request logic for proper 
@@ -57,7 +57,8 @@
         public void AdvanceExistingGame()
         {
             GameStateChecker.iterationCount--;
-
+            SavedObjects savedObjects = new SavedObjects();
+            GameHandler gameHandler = new GameHandler();
             bool isGameOn = true;
             
 
@@ -78,7 +79,7 @@
                 switch (key)
                 {
                     case ConsoleKey.S:
-                        GameHandler.SaveData(gameFieldData);
+                        gameHandler.SaveData(gameFieldData);
                         GameStateChecker.iterationCount--;
                         break;
                     case ConsoleKey.Q:
@@ -86,8 +87,10 @@
                         isGameOn = false;
                         break;
                     case ConsoleKey.L:
-                        GameStateChecker.iterationCount = GameHandler.LoadIteration()-1;
-                        gameFieldData = GameHandler.LoadGame();
+                        object savedData = gameHandler.LoadData();
+                        savedObjects = (SavedObjects)savedData;
+                        GameStateChecker.iterationCount = savedObjects.Iteration -1;
+                        gameFieldData = savedObjects.GameFieldData;
                         Thread.Sleep(500);
                         Console.Clear();
                         break;

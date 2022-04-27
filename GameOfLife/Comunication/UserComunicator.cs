@@ -4,10 +4,9 @@
     {
         /// <summary>
         /// Gets user entered value and check if it is an integer input,
-        /// then passes it to the GetInputValueRanged method
         /// </summary>
-        /// <param name="request">User entered input</param>
-        /// <returns></returns>
+        /// <param name="request">User presented text string from Repository</param>
+        /// <returns>User entered input</returns>
         public static int GetInputValue(string request)
         {
             while (true)
@@ -30,10 +29,10 @@
         /// <summary>
         /// Checks if number input is within the defined bounds
         /// </summary>
-        /// <param name="request">User input from GetInputValue method</param>
+        /// <param name="request">User presented text string from Repository</param>
         /// <param name="lowerLimit">Defined minimum value for number to be valid</param>
-        /// <param name="upperLimit">Defined maximu,value for number input</param>
-        /// <returns></returns>
+        /// <param name="upperLimit">Defined maximum,value for number input</param>
+        /// <returns>User entered input if in defined bounds</returns>
         public static int GetInputValueRanged(string request, int lowerLimit, int upperLimit)
         {
             while (true)

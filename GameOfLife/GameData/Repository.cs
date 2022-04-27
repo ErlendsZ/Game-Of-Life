@@ -15,9 +15,8 @@
         public const string IteratorMessageSecondPart = " in Game Of Life";
         public const string LoadedIterationMessageFirstPart = "Loading Iteration: ";
         public const string SavedIterationMessageFirstPart = "Saved Iteration: ";
+        public const string LiveCellCountMessage = "There are currently: {0} Live Cells";
         public const string LoadedSavedMessageSecondPart = " of Game Of Life";
-        public const string LiveCellCountMessageFirstPart = "There are currently: ";
-        public const string LiveCellCountMessageSecondPart = " Live Cells ";
         public const string QuitGameMessage = " You quit the game :( ";
         public const string DataFileName = "GameOfLife.data";
         public const string ExitSaveMessage = "Press ESC to exit to main menu, S to save game state, L to load saved game state";

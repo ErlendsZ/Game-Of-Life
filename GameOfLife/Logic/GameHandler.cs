@@ -6,44 +6,29 @@ using System.Threading.Tasks;
 
 namespace GameOfLife
 {
-    public static class GameHandler
+    public class GameHandler
     {
-        public static void SaveData(GameFieldData gameFieldData)
+        private readonly DataSerialization dataSerialization = new DataSerialization();
+        public void SaveData(GameFieldData gameFieldData)
         {
-            DataSerialization dataSerializer = new DataSerialization();
-            GameFieldData Field = gameFieldData;
             SavedObjects savedObjects = new SavedObjects()
-            { Iteration = GameStateChecker.iterationCount, gameFieldData = Field };
+            { Iteration = GameStateChecker.iterationCount, GameFieldData = gameFieldData };
 
-            dataSerializer.BinarySerialize(savedObjects, Repository.DataFileName);
+            dataSerialization.BinarySerialize(savedObjects, Repository.DataFileName);
             UserComunicator.PrintWarningMessage(Repository.SavedIterationMessageFirstPart + savedObjects.Iteration + Repository.LoadedSavedMessageSecondPart);
         }
 
         /// <summary>
         /// Loads serilized data
         /// </summary>
-        /// <returns>gameField (array of cells) data to be passed for next iterations</returns>
-        public static GameFieldData LoadGame()
+        /// <returns>SavedObjects which contains GameField (array of cells) data to be passed
+        /// for next iterations and current iteration number</returns>
+        public object LoadData()
         {
-            DataSerialization dataSerializer = new DataSerialization();
-            SavedObjects? savedObjects = null;
-            savedObjects = dataSerializer.BinaryDeserialize(Repository.DataFileName) as SavedObjects;
+            SavedObjects savedObjects = dataSerialization.BinaryDeserialize(Repository.DataFileName, dataSerialization) as SavedObjects;
             UserComunicator.PrintWarningMessage(Repository.LoadedIterationMessageFirstPart + savedObjects?.Iteration + Repository.LoadedSavedMessageSecondPart);
             
-            return savedObjects.gameFieldData;
-        }
-
-        /// <summary>
-        /// Loads iteration data
-        /// </summary>
-        /// <returns>Number of curent iteration, used for proper counting of
-        /// itterator when loading/saving game</returns>
-        public static int LoadIteration()
-        {
-            DataSerialization dataSerializer = new DataSerialization();
-            SavedObjects? savedObjects = null;
-            savedObjects = dataSerializer.BinaryDeserialize(Repository.DataFileName) as SavedObjects;
-            return savedObjects.Iteration;
+            return savedObjects;
         }
     }
 }

@@ -18,35 +18,34 @@ namespace GameOfLife
         /// </summary>
         /// <param name="data">objects to serialize</param>
         /// <param name="filePath">relative location of seriliazation file</param>
-        public void BinarySerialize(object data, string filePath)
+        public object BinarySerialize(object savedData, string filePath)
         {
             FileStream fileStream;
             BinaryFormatter formatter = new BinaryFormatter();
             if (File.Exists(filePath))
                 File.Delete(filePath);
             fileStream = File.Create(filePath);
-            formatter.Serialize(fileStream, data);
+            formatter.Serialize(fileStream, savedData);
             fileStream.Close();
+            return savedData;
         }
 
         /// <summary>
         /// Deserializes content
         /// </summary>
         /// <param name="filePath"> Location of saved binary file</param>
-        /// <returns></returns>
-        public object BinaryDeserialize(string filePath)
+        /// <returns>Deserialized object</returns>
+        public object BinaryDeserialize(string filePath, object savedData)
         {
-            object obj = null;
-
             FileStream fileStream;
             BinaryFormatter formatter = new BinaryFormatter();
             if (File.Exists(filePath))
             {
                 fileStream = File.OpenRead(filePath);
-                obj = formatter.Deserialize(fileStream);
+                savedData = formatter.Deserialize(fileStream);
                 fileStream.Close();
             }
-            return obj;
+            return savedData;
         }
 
     }
