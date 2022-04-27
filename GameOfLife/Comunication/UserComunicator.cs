@@ -53,7 +53,7 @@
         }
 
         /// <summary>
-        /// Visualy modifies text messages based on their use.
+        /// Visualy modifies text message
         /// </summary>
         /// <param name="message">Text message passed form repository</param>
         public static void PrintErrorMessage(string message)
@@ -63,6 +63,10 @@
             Console.ResetColor();
         }
 
+        /// <summary>
+        /// Visualy modifies text message
+        /// </summary>
+        /// <param name="message">Text message passed form repository</param>
         public static void PrintHeaderMessage(string message)
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -70,6 +74,11 @@
             Console.ResetColor();
         }
 
+        /// <summary>
+        /// Visualy modifies text message
+        /// </summary>
+        /// <param name="message">Text message passed form repository</param>
+        /// <param name="number">Values used by String.Format; (Iteration and LiveCell count)</param>
         public static void PrintWarningMessage(string message, int number)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -77,6 +86,11 @@
             Console.ResetColor();
         }
 
+        /// <summary>
+        /// While game is being rendered, checks for any key preses
+        /// from user
+        /// </summary>
+        /// <returns>Presed key or CLEAR key if no input is given</returns>
         public static ConsoleKey KeyPressed()
         {
             if (Console.KeyAvailable)

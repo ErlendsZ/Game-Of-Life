@@ -9,6 +9,11 @@ namespace GameOfLife
     public class GameHandler
     {
         private readonly DataSerialization dataSerialization = new DataSerialization();
+
+        /// <summary>
+        /// Saves current gameData
+        /// </summary>
+        /// <param name="gameFieldData">Game field data in current iteration</param>
         public void SaveData(GameFieldData gameFieldData)
         {
             SavedObjects savedObjects = new SavedObjects()
@@ -21,8 +26,7 @@ namespace GameOfLife
         /// <summary>
         /// Loads serilized data
         /// </summary>
-        /// <returns>SavedObjects which contains GameField (array of cells) data to be passed
-        /// for next iterations and current iteration number</returns>
+        /// <returns>SavedObjects which contains GameField (array of cells) and current iteration number</returns>
         public object LoadData()
         {
             SavedObjects savedObjects = dataSerialization.BinaryDeserialize(Repository.DataFileName, dataSerialization) as SavedObjects;
