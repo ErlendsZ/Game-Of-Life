@@ -1,5 +1,9 @@
 ﻿namespace GameOfLife
 {
+    /// <summary>
+    /// Contains data of array dimensions and data about 
+    /// next generation results based on previous
+    /// </summary>
     [Serializable]
     public class GameFieldData
     {

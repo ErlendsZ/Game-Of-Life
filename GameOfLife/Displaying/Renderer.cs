@@ -1,6 +1,9 @@
 ﻿
 namespace GameOfLife
 {
+    /// <summary>
+    /// Renders Iteration messages, Live cell count GameArray, quitGane message
+    /// </summary>
     public class Renderer
     {
         /// <summary>

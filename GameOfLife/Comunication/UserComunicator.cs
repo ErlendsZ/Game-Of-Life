@@ -1,5 +1,8 @@
 ﻿namespace GameOfLife
 {
+    /// <summary>
+    /// Manages comunication with user onput values
+    /// </summary>
     public static class UserComunicator
     {
         /// <summary>

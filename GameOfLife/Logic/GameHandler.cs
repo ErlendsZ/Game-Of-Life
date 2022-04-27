@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace GameOfLife
 {
+    /// <summary>
+    /// Handles game loading and saving.
+    /// </summary>
     public class GameHandler
     {
         private readonly DataSerialization dataSerialization = new DataSerialization();

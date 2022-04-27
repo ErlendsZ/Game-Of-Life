@@ -1,6 +1,8 @@
 ﻿namespace GameOfLife
 {
-
+    /// <summary>
+    /// Polutes array with values
+    /// </summary>
     public static class CellPopulator
     {
         /// <summary>
