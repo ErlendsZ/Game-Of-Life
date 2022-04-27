@@ -14,8 +14,7 @@
             {
                 Console.Clear();
                 Console.WriteLine(request);
-                bool success = Int32.TryParse(Console.ReadLine(), out int input);
-                if (success)
+                if (Int32.TryParse(Console.ReadLine(), out int input))
                 {
                     return input;
                 }
