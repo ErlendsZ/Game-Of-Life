@@ -15,7 +15,7 @@ namespace GameOfLife
             { Iteration = GameStateChecker.iterationCount, GameFieldData = gameFieldData };
 
             dataSerialization.BinarySerialize(savedObjects, Repository.DataFileName);
-            UserComunicator.PrintWarningMessage(Repository.SavedIterationMessageFirstPart + savedObjects.Iteration + Repository.LoadedSavedMessageSecondPart);
+            UserComunicator.PrintWarningMessage(Repository.SavedIterationMessage, savedObjects.Iteration);
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace GameOfLife
         public object LoadData()
         {
             SavedObjects savedObjects = dataSerialization.BinaryDeserialize(Repository.DataFileName, dataSerialization) as SavedObjects;
-            UserComunicator.PrintWarningMessage(Repository.LoadedIterationMessageFirstPart + savedObjects?.Iteration + Repository.LoadedSavedMessageSecondPart);
+            UserComunicator.PrintWarningMessage(Repository.LoadedIterationMessage, savedObjects.Iteration);
             
             return savedObjects;
         }

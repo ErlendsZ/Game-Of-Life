@@ -25,7 +25,7 @@
                         UserComunicator.PrintOrdinaryMessage(Repository.PressKeyMessage);
                         break;
                     case 3:
-                        UserComunicator.PrintWarningMessage(Repository.QuitGameMessage);
+                        UserComunicator.PrintWarningMessage(Repository.QuitGameMessage, 0);
                         Environment.Exit(0);
                         break;
                 }

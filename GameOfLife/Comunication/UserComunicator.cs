@@ -70,10 +70,10 @@
             Console.ResetColor();
         }
 
-        public static void PrintWarningMessage(string message)
+        public static void PrintWarningMessage(string message, int number)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(message);
+            Console.WriteLine(message, number);
             Console.ResetColor();
         }
 
