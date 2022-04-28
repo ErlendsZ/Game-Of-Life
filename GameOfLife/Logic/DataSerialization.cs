@@ -16,7 +16,7 @@ namespace GameOfLife
         /// <summary>
         /// Serializes file into file path
         /// </summary>
-        /// <param name="data">objects to serialize</param>
+        /// <param name="savedData">objects to serialize</param>
         /// <param name="filePath">relative location of seriliazation file</param>
         public object BinarySerialize(object savedData, string filePath)
         {
