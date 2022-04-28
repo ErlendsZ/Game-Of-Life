@@ -34,6 +34,7 @@ namespace GameOfLife
         /// Deserializes content
         /// </summary>
         /// <param name="filePath"> Location of saved binary file</param>
+        /// <param name="savedData">Saved data to deserialize</param>
         /// <returns>Deserialized object</returns>
         public object BinaryDeserialize(string filePath, object savedData)
         {
