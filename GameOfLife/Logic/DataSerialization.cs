@@ -11,14 +11,14 @@ namespace GameOfLife
     /// <summary>
     ///  Wraper to encapsulate serialization code
     /// </summary>
-    class DataSerialization
+    class  DataSerialization
     {
         /// <summary>
         /// Serializes file into file path
         /// </summary>
         /// <param name="savedData">objects to serialize</param>
         /// <param name="filePath">relative location of seriliazation file</param>
-        public object BinarySerialize(object savedData, string filePath)
+        public T? BinarySerialize<T>(T savedData, string filePath)
         {
             FileStream fileStream;
             BinaryFormatter formatter = new BinaryFormatter();
@@ -36,20 +36,21 @@ namespace GameOfLife
         /// <param name="filePath"> Location of saved binary file</param>
         /// <param name="savedData">Saved data to deserialize</param>
         /// <returns>Deserialized object</returns>
-        public object BinaryDeserialize(string filePath, object savedData)
+        public T? BinaryDeserialize<T>(string filePath)
         {
+            
             FileStream fileStream;
             BinaryFormatter formatter = new BinaryFormatter();
           
             if (File.Exists(filePath))
             {
                 fileStream = File.OpenRead(filePath);
-                savedData = formatter.Deserialize(fileStream);
+                var savedData = (T)formatter.Deserialize(fileStream);
                 fileStream.Close();
                 return savedData;
             }
 
-            return null;
+            return default;
         }
     }
 }

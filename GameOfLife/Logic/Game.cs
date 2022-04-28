@@ -86,15 +86,14 @@
                         isGameOn = false;
                         break;
                     case ConsoleKey.L:
-                        object savedData = gameHandler.LoadData();
+                        SavedObjects savedData = gameHandler.LoadData();
                         if(savedData == null)
                         {
                             GameStateChecker.iterationCount -= 1;
                             break;
                         }
-                        savedObjects = (SavedObjects)savedData;
-                        GameStateChecker.iterationCount = savedObjects.Iteration - 1;
-                        gameFieldData = savedObjects.GameFieldData;
+                        GameStateChecker.iterationCount = savedData.Iteration - 1;
+                        gameFieldData = savedData.GameFieldData;
                         Thread.Sleep(500);
                         Console.Clear();
                         break;

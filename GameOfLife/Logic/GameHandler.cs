@@ -30,9 +30,9 @@ namespace GameOfLife
         /// Loads serilized data
         /// </summary>
         /// <returns>SavedObjects which contains GameField (array of cells) and current iteration number</returns>
-        public object LoadData()
+        public SavedObjects LoadData()
         {
-            SavedObjects savedObjects = dataSerialization.BinaryDeserialize(Repository.DataFileName, dataSerialization) as SavedObjects;
+            SavedObjects savedObjects = dataSerialization.BinaryDeserialize<SavedObjects>(Repository.DataFileName);
             if (savedObjects == null)
                 UserComunicator.PrintErrorMessage(Repository.UnsuccessfulDeserializationMessage);
             else

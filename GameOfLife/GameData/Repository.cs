@@ -18,7 +18,7 @@
         public const string QuitGameMessage = " You quit the game :( ";
         public const string DataFileName = "GameOfLife.data";
         public const string ExitSaveMessage = "Press ESC to exit to main menu, S to save game state, L to load saved game state";
-        public const string UnsuccessfulDeserializationMessage = "Can't Deserialize. Have you checked if file exists ?";
+        public const string UnsuccessfulDeserializationMessage = "Can't Deserialize!";
         public const string UnsuccessfulContinueMessage = "Start a new game to continue";
     }
 }
