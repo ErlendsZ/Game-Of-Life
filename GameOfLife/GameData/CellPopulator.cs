@@ -21,7 +21,7 @@
                 for (int j = 0; j < gameField.GetLength(1); j++)
                 {
                     gameField[i, j] = randomizer.Next(0, 2);
-                   
+
                 }
             }
         }

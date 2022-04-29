@@ -102,7 +102,7 @@
                 return keyInfo.Key;
             }
             return ConsoleKey.Clear;
-           
+
         }
     }
 }

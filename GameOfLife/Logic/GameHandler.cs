@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameOfLife
+﻿namespace GameOfLife
 {
     /// <summary>
     /// Handles game loading and saving.
@@ -20,7 +14,7 @@ namespace GameOfLife
         public void SaveData(GameFieldData gameFieldData)
         {
             SavedObjects savedObjects = new SavedObjects()
-            { Iteration = GameStateChecker.iterationCount, GameFieldData = gameFieldData };
+            { Iteration = GameFieldData.iterationCount, GameFieldData = gameFieldData };
 
             dataSerialization.BinarySerialize(savedObjects, Repository.DataFileName);
             UserComunicator.PrintWarningMessage(Repository.SavedIterationMessage, savedObjects.Iteration);

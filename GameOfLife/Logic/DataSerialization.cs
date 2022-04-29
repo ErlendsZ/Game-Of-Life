@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+﻿using System.Runtime.Serialization.Formatters.Binary;
 
 namespace GameOfLife
 {
     /// <summary>
     ///  Wraper to encapsulate serialization code
     /// </summary>
-    class  DataSerialization
+    public class DataSerialization
     {
         /// <summary>
         /// Serializes file into file path
@@ -20,10 +14,14 @@ namespace GameOfLife
         /// <param name="filePath">relative location of seriliazation file</param>
         public T? BinarySerialize<T>(T savedData, string filePath)
         {
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+
             FileStream fileStream;
             BinaryFormatter formatter = new BinaryFormatter();
-            if (File.Exists(filePath))
-                File.Delete(filePath);
+
             fileStream = File.Create(filePath);
             formatter.Serialize(fileStream, savedData);
             fileStream.Close();
@@ -38,12 +36,11 @@ namespace GameOfLife
         /// <returns>Deserialized object</returns>
         public T? BinaryDeserialize<T>(string filePath)
         {
-            
-            FileStream fileStream;
-            BinaryFormatter formatter = new BinaryFormatter();
-          
             if (File.Exists(filePath))
             {
+                FileStream fileStream;
+                BinaryFormatter formatter = new BinaryFormatter();
+
                 fileStream = File.OpenRead(filePath);
                 var savedData = (T)formatter.Deserialize(fileStream);
                 fileStream.Close();

@@ -11,7 +11,7 @@
         public const string NotNumberMessage = "Input must be a number!";
         public const string OutOfRangeMessage = "Selected number is too high or low!";
         public const string MainMenuMessage = "1.Start New Game. \n2.Continue. \n3.Quit Game";
-        public const string IteratorMessage= "Iteration: {0} in Game Of Life   ";
+        public const string IteratorMessage = "Iteration: {0} in Game Of Life   ";
         public const string LiveCellCountMessage = "There are currently: {0} Live Cells   ";
         public const string SavedIterationMessage = "Saved iteration: {0}   ";
         public const string LoadedIterationMessage = "Loading iteration: {0} of Game Of Life   ";

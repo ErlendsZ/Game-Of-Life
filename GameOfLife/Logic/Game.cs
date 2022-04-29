@@ -42,20 +42,20 @@
         /// </summary>
         public void ExecuteNewGame()
         {
-            GameStateChecker.iterationCount = 1;
+            GameFieldData.iterationCount = 1;
             gameFieldData = new GameFieldData();
             AdvanceExistingGame();
         }
 
         /// <summary>
         /// Since rendering array increases iteration counter,
-        /// GameStateChecker is set to decrement. Based on key Press executes
+        /// GameFieldData is set to decrement. Based on key Press executes
         /// either:
         /// 1.Save; 2.Load 3.Quit comands. Quits to main menu.
         /// </summary>
         public void AdvanceExistingGame()
         {
-            GameStateChecker.iterationCount--;
+            GameFieldData.iterationCount--;
             SavedObjects savedObjects = new SavedObjects();
             GameHandler gameHandler = new GameHandler();
             bool isGameOn = true;
@@ -66,7 +66,7 @@
                 Thread.Sleep(1000);
                 return;
             }
-            
+
             while (isGameOn)
             {
                 bool isLoaded = false;
@@ -74,12 +74,12 @@
                 renderer.PrintArray(gameFieldData.gameFieldArray);
                 Thread.Sleep(1000);
                 ConsoleKey key = UserComunicator.KeyPressed();
-               
+
                 switch (key)
                 {
                     case ConsoleKey.S:
                         gameHandler.SaveData(gameFieldData);
-                        GameStateChecker.iterationCount--;
+                        GameFieldData.iterationCount--;
                         break;
                     case ConsoleKey.Q:
                     case ConsoleKey.Escape:
@@ -87,19 +87,19 @@
                         break;
                     case ConsoleKey.L:
                         SavedObjects savedData = gameHandler.LoadData();
-                        if(savedData == null)
+                        if (savedData == null)
                         {
-                            GameStateChecker.iterationCount -= 1;
+                            GameFieldData.iterationCount -= 1;
                             break;
                         }
-                        GameStateChecker.iterationCount = savedData.Iteration - 1;
+                        GameFieldData.iterationCount = savedData.Iteration - 1;
                         gameFieldData = savedData.GameFieldData;
                         Thread.Sleep(500);
                         Console.Clear();
                         break;
-                        default:
+                    default:
                         if (isLoaded == false)
-                        gameFieldData.GetNextGeneration();
+                            gameFieldData.GetNextGeneration();
                         break;
                 }
             }
