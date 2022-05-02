@@ -1,7 +1,24 @@
 ﻿namespace GameOfLife
 {
-    public class NextCellGeneration
+    /// <summary>
+    /// Contains data of array dimensions and data about 
+    /// next generation results based on previous. Also contains data of  live 
+    /// cell count in current iterations and iteration numbering.
+    /// </summary>
+    /// 
+
+    [Serializable]
+    public class GameFieldData
     {
+        public int[,]? gameFieldArray;
+        public static int iterationCount = 0;
+
+        public GameFieldData(int rows, int colums)
+        {
+            gameFieldArray = new int[rows, colums];
+            CellPopulator.RandomizeCells(gameFieldArray);
+        }
+
         /// <summary>
         ///  Calculates next generation of cells and updates gameField acording to these 4 rules:
         ///  1)Any live cell with fewer than two live neighbours dies, as if by underpopulation.
@@ -10,29 +27,28 @@
         ///  4)Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
         /// </summary>
         /// <param name="gameField">Passing previous generation of array for next generation cell calculation</param>
-
-        public void CellCalculation(int[,] gameField)
+        public void GetNextGeneration()
         {
-            int lenght = gameField.GetLength(0);
-            int width = gameField.GetLength(1);
+            int lenght = gameFieldArray.GetLength(0);
+            int width = gameFieldArray.GetLength(1);
             int[,] nextGenerationOfCells = new int[lenght, width];
             for (int i = 0; i < lenght; i++)
             {
                 for (int j = 0; j < width; j++)
                 {
-                    int liveNeighbourCells = CalculateAliveNeighbourCount(lenght, width, i, j, gameField);
+                    int liveNeighbourCells = CalculateAliveNeighbourCount(lenght, width, i, j, gameFieldArray);
 
-                    if (gameField[i, j] == 1 && (liveNeighbourCells == 3 || liveNeighbourCells == 2))
+                    if (gameFieldArray[i, j] == 1 && (liveNeighbourCells == 3 || liveNeighbourCells == 2))
                     {
                         nextGenerationOfCells[i, j] = 1;
                     }
-                    else if (gameField[i, j] == 0 && (liveNeighbourCells == 3))
+                    else if (gameFieldArray[i, j] == 0 && (liveNeighbourCells == 3))
                     {
                         nextGenerationOfCells[i, j] = 1;
                     }
                 }
             }
-            CopyNextGenerationArrayToGameFieldArray(lenght, width, nextGenerationOfCells, gameField);
+            CopyNextGenerationArrayToGameFieldArray(lenght, width, nextGenerationOfCells, gameFieldArray);
         }
 
         /// <summary>
@@ -77,15 +93,13 @@
                     }
 
                     liveNeighbourCells += gameField[cordinateX, cordinateY];
-
                 }
             }
-
             liveNeighbourCells -= gameField[i, j];
             return liveNeighbourCells;
         }
 
-        private int[,] CopyNextGenerationArrayToGameFieldArray(int lenght, int width, int[,] nextGenerationOfCells, int[,] gameField)
+        private void CopyNextGenerationArrayToGameFieldArray(int lenght, int width, int[,] nextGenerationOfCells, int[,] gameField)
         {
             for (int i = 0; i < lenght; i++)
             {
@@ -94,12 +108,31 @@
                     gameField[i, j] = nextGenerationOfCells[i, j];
                 }
             }
-            return gameField;
-
         }
 
+        /// <summary>
+        /// Calculates alive cells in GameField
+        /// </summary>
+        /// <param name="gameFieldArray">Current game array</param>
+        /// <returns>Alive cell count</returns>
+        public static int AliveCellsInCurrentIteration(int[,] gameFieldArray)
+        {
+            int aliveCells = 0;
+
+            for (int i = 0; i < gameFieldArray.GetLength(0); i++)
+            {
+                for (int j = 0; j < gameFieldArray.GetLength(1); j++)
+                {
+                    if (gameFieldArray[i, j] == 1)
+                    {
+                        aliveCells++;
+                    }
+                }
+            }
+
+            return aliveCells;
+        }
     }
 }
-
 
 
