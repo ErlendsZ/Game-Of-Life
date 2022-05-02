@@ -12,11 +12,13 @@
     {
         public int[,]? gameFieldArray;
         public static int iterationCount = 0;
-
+        
         public GameFieldData(int rows, int colums)
         {
+           
             gameFieldArray = new int[rows, colums];
-            CellPopulator.RandomizeCells(gameFieldArray);
+           
+           
         }
 
         /// <summary>

@@ -26,6 +26,12 @@
             }
         }
 
+        /// <summary>
+        /// Populates array with glider
+        /// </summary>
+        /// <param name="gameField"> Starting array gameField created 
+        /// based on user entered lenght and width</param>
+        /// <returns>gamefield array with randomly populated cells (1 or 0)</returns>
         public static void GliderCreation(int[,] gameField)
         {
             for (int i = 0; i < gameField.GetLength(0); i++)

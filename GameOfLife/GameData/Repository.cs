@@ -20,5 +20,6 @@
         public const string ExitSaveMessage = "Press ESC to exit to main menu, S to save game state, L to load saved game state";
         public const string UnsuccessfulDeserializationMessage = "Can't Deserialize!";
         public const string UnsuccessfulContinueMessage = "Start a new game to continue";
+        public const string ChoseCellPopulatorMessage = "Enter 1 for random cell creation. \nEnter 2 for glider creation.";
     }
 }

@@ -46,8 +46,19 @@
             GameFieldData.iterationCount = 1;
             int rows = userComunicator.GetInputValueRanged(Repository.EnterRowsCountMessage, 5, 50);
             int colums = userComunicator.GetInputValueRanged(Repository.EnterCollumsCountMessage, 5, 50);
-            
+
             gameFieldData = new GameFieldData(rows, colums);
+
+            switch (userComunicator.GetInputValueRanged(Repository.ChoseCellPopulatorMessage, 1, 2))
+            {
+                case 1:
+                    CellPopulator.RandomizeCells(gameFieldData.gameFieldArray);
+                    break;
+                case 2:
+                    CellPopulator.GliderCreation(gameFieldData.gameFieldArray);
+                    break;
+            }
+
             AdvanceExistingGame();
         }
 
