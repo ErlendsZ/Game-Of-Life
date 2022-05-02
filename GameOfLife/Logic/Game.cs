@@ -43,8 +43,11 @@
         /// </summary>
         public void ExecuteNewGame()
         {
+            int rows = userComunicator.GetInputValueRanged(Repository.EnterRowsCountMessage, 5, 50);
+            int colums = userComunicator.GetInputValueRanged(Repository.EnterCollumsCountMessage, 5, 50);
+
             GameFieldData.iterationCount = 1;
-            gameFieldData = new GameFieldData();
+            gameFieldData = new GameFieldData(rows, colums);
             AdvanceExistingGame();
         }
 
@@ -59,7 +62,6 @@
             GameFieldData.iterationCount--;
             SavedObjects savedObjects = new SavedObjects();
             GameHandler gameHandler = new GameHandler();
-            
             bool isGameOn = true;
 
             if (gameFieldData == null)
