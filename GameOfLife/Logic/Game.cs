@@ -25,7 +25,7 @@
                         AdvanceExistingGame();
                         break;
                     case 3:
-                        userComunicator.PrintWarningMessage(Repository.QuitGameMessage, 0);
+                        userComunicator.PrintWarningMessage(Repository.QuitGameMessage);
                         Environment.Exit(0);
                         break;
                 }
@@ -60,7 +60,6 @@
         public void AdvanceExistingGame()
         {
             GameFieldData.iterationCount--;
-            SavedObjects savedObjects = new SavedObjects();
             GameHandler gameHandler = new GameHandler();
             bool isGameOn = true;
 

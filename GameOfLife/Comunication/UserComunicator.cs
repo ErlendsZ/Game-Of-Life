@@ -82,10 +82,10 @@
         /// </summary>
         /// <param name="message">Text message passed form repository</param>
         /// <param name="number">Values used by String.Format; (Iteration and LiveCell count)</param>
-        public void PrintWarningMessage(string message, int number)
+        public void PrintWarningMessage(string message)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(message, number);
+            Console.WriteLine(message);
             Console.ResetColor();
         }
 

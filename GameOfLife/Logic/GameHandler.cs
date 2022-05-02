@@ -18,7 +18,7 @@
             { Iteration = GameFieldData.iterationCount, GameFieldData = gameFieldData };
 
             dataSerialization.BinarySerialize(savedObjects, Repository.DataFileName);
-            userComunicator.PrintWarningMessage(Repository.SavedIterationMessage, savedObjects.Iteration);
+            userComunicator.PrintWarningMessage(String.Format(Repository.SavedIterationMessage, savedObjects.Iteration));
         }
 
         /// <summary>
@@ -31,7 +31,7 @@
             if (savedObjects == null)
                 userComunicator.PrintErrorMessage(Repository.UnsuccessfulDeserializationMessage);
             else
-                userComunicator.PrintWarningMessage(Repository.LoadedIterationMessage, savedObjects.Iteration);
+                userComunicator.PrintWarningMessage(String.Format(Repository.LoadedIterationMessage, savedObjects.Iteration));
             return savedObjects;
         }
     }

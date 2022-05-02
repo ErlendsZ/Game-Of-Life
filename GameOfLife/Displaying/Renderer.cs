@@ -28,7 +28,7 @@ namespace GameOfLife
                 Console.WriteLine("");
             }
 
-            userComunicator.PrintWarningMessage(Repository.ExitSaveMessage, 0);
+            userComunicator.PrintWarningMessage(Repository.ExitSaveMessage);
         }
     }
 }
