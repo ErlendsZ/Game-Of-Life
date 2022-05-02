@@ -5,6 +5,7 @@
     /// </summary>
     public class GameHandler
     {
+        UserComunicator userComunicator = new UserComunicator();
         private readonly DataSerialization dataSerialization = new DataSerialization();
 
         /// <summary>
@@ -17,7 +18,7 @@
             { Iteration = GameFieldData.iterationCount, GameFieldData = gameFieldData };
 
             dataSerialization.BinarySerialize(savedObjects, Repository.DataFileName);
-            UserComunicator.PrintWarningMessage(Repository.SavedIterationMessage, savedObjects.Iteration);
+            userComunicator.PrintWarningMessage(Repository.SavedIterationMessage, savedObjects.Iteration);
         }
 
         /// <summary>
@@ -28,9 +29,9 @@
         {
             SavedObjects savedObjects = dataSerialization.BinaryDeserialize<SavedObjects>(Repository.DataFileName);
             if (savedObjects == null)
-                UserComunicator.PrintErrorMessage(Repository.UnsuccessfulDeserializationMessage);
+                userComunicator.PrintErrorMessage(Repository.UnsuccessfulDeserializationMessage);
             else
-                UserComunicator.PrintWarningMessage(Repository.LoadedIterationMessage, savedObjects.Iteration);
+                userComunicator.PrintWarningMessage(Repository.LoadedIterationMessage, savedObjects.Iteration);
             return savedObjects;
         }
     }

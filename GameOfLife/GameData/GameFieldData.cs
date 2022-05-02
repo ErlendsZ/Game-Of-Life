@@ -12,11 +12,12 @@
     {
         public int[,]? gameFieldArray;
         public static int iterationCount = 1;
+        UserComunicator userComunicator = new UserComunicator();
 
         public GameFieldData()
         {
-            int rows = UserComunicator.GetInputValueRanged(Repository.EnterRowsCountMessage, 5, 50);
-            int colums = UserComunicator.GetInputValueRanged(Repository.EnterCollumsCountMessage, 5, 50);
+            int rows = userComunicator.GetInputValueRanged(Repository.EnterRowsCountMessage, 5, 50);
+            int colums = userComunicator.GetInputValueRanged(Repository.EnterCollumsCountMessage, 5, 50);
             gameFieldArray = new int[rows, colums];
             CellPopulator.RandomizeCells(gameFieldArray);
         }

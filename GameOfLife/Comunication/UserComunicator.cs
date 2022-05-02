@@ -3,14 +3,14 @@
     /// <summary>
     /// Manages comunication with user onput values
     /// </summary>
-    public static class UserComunicator
+    public class UserComunicator
     {
         /// <summary>
         /// Gets user entered value and check if it is an integer input,
         /// </summary>
         /// <param name="request">User presented text string from Repository</param>
         /// <returns>User entered input</returns>
-        public static int GetInputValue(string request)
+        public int GetInputValue(string request)
         {
             while (true)
             {
@@ -36,7 +36,7 @@
         /// <param name="lowerLimit">Defined minimum value for number to be valid</param>
         /// <param name="upperLimit">Defined maximum,value for number input</param>
         /// <returns>User entered input if in defined bounds</returns>
-        public static int GetInputValueRanged(string request, int lowerLimit, int upperLimit)
+        public int GetInputValueRanged(string request, int lowerLimit, int upperLimit)
         {
             while (true)
             {
@@ -59,7 +59,7 @@
         /// Visualy modifies text message
         /// </summary>
         /// <param name="message">Text message passed form repository</param>
-        public static void PrintErrorMessage(string message)
+        public void PrintErrorMessage(string message)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(message);
@@ -70,7 +70,7 @@
         /// Visualy modifies text message
         /// </summary>
         /// <param name="message">Text message passed form repository</param>
-        public static void PrintHeaderMessage(string message)
+        public void PrintHeaderMessage(string message)
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(message);
@@ -82,7 +82,7 @@
         /// </summary>
         /// <param name="message">Text message passed form repository</param>
         /// <param name="number">Values used by String.Format; (Iteration and LiveCell count)</param>
-        public static void PrintWarningMessage(string message, int number)
+        public void PrintWarningMessage(string message, int number)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(message, number);
@@ -94,7 +94,7 @@
         /// from user
         /// </summary>
         /// <returns>Presed key or CLEAR key if no input is given</returns>
-        public static ConsoleKey KeyPressed()
+        public ConsoleKey KeyPressed()
         {
             if (Console.KeyAvailable)
             {

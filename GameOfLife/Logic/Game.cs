@@ -4,6 +4,7 @@
     {
         private GameFieldData? gameFieldData;
         private Renderer renderer = new Renderer();
+        UserComunicator userComunicator = new UserComunicator();
 
         /// <summary>
         /// Main menu of game, which, high level game request logic for proper 
@@ -13,7 +14,7 @@
         {
             while (true)
             {
-                int choice = UserComunicator.GetInputValueRanged(Repository.MainMenuMessage, 1, 3);
+                int choice = userComunicator.GetInputValueRanged(Repository.MainMenuMessage, 1, 3);
 
                 switch (choice)
                 {
@@ -24,7 +25,7 @@
                         AdvanceExistingGame();
                         break;
                     case 3:
-                        UserComunicator.PrintWarningMessage(Repository.QuitGameMessage, 0);
+                        userComunicator.PrintWarningMessage(Repository.QuitGameMessage, 0);
                         Environment.Exit(0);
                         break;
                 }
@@ -58,11 +59,12 @@
             GameFieldData.iterationCount--;
             SavedObjects savedObjects = new SavedObjects();
             GameHandler gameHandler = new GameHandler();
+            
             bool isGameOn = true;
 
             if (gameFieldData == null)
             {
-                UserComunicator.PrintErrorMessage(Repository.UnsuccessfulContinueMessage);
+                userComunicator.PrintErrorMessage(Repository.UnsuccessfulContinueMessage);
                 Thread.Sleep(1000);
                 return;
             }
@@ -73,7 +75,7 @@
 
                 renderer.PrintArray(gameFieldData.gameFieldArray);
                 Thread.Sleep(1000);
-                ConsoleKey key = UserComunicator.KeyPressed();
+                ConsoleKey key = userComunicator.KeyPressed();
 
                 switch (key)
                 {

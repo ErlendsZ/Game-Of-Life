@@ -13,9 +13,10 @@ namespace GameOfLife
         /// <param name="gameField">current generation of game array array</param>
         public void PrintArray(int[,] gameField)
         {
+            UserComunicator userComunicator = new UserComunicator();
             Console.SetCursorPosition(0, 0);
-            UserComunicator.PrintHeaderMessage(String.Format(Repository.LiveCellCountMessage, GameFieldData.AliveCellsInCurrentIteration(gameField)));
-            UserComunicator.PrintHeaderMessage(String.Format(Repository.IteratorMessage, GameFieldData.IterationCounter()));
+            userComunicator.PrintHeaderMessage(String.Format(Repository.LiveCellCountMessage, GameFieldData.AliveCellsInCurrentIteration(gameField)));
+            userComunicator.PrintHeaderMessage(String.Format(Repository.IteratorMessage, GameFieldData.IterationCounter()));
 
             for (int i = 0; i < gameField.GetLength(0); i++)
             {
@@ -27,7 +28,7 @@ namespace GameOfLife
                 Console.WriteLine("");
             }
 
-            UserComunicator.PrintWarningMessage(Repository.ExitSaveMessage, 0);
+            userComunicator.PrintWarningMessage(Repository.ExitSaveMessage, 0);
         }
     }
 }
