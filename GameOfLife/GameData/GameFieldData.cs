@@ -11,7 +11,7 @@
     public class GameFieldData
     {
         public int[,]? gameFieldArray;
-        public static int iterationCount = 1;
+        public static int iterationCount = 0;
 
         public GameFieldData(int rows, int colums)
         {
@@ -131,26 +131,6 @@
             }
 
             return aliveCells;
-        }
-
-
-        /// <summary>
-        /// Iteration counter
-        /// </summary>
-        /// <returns>incremented iteration count by 1</returns>
-        public static int IterationCounter()
-        {
-            iterationCount++;
-            return iterationCount;
-        }
-
-        /// <summary>
-        /// Iteration counter
-        /// </summary>
-        /// <returns>incremented iteration count by 1</returns>
-        public static int CurrentIteration(int iterationCount)
-        {
-            return iterationCount;
         }
     }
 }

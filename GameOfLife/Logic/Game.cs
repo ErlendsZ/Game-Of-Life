@@ -43,18 +43,17 @@
         /// </summary>
         public void ExecuteNewGame()
         {
+            GameFieldData.iterationCount = 1;
             int rows = userComunicator.GetInputValueRanged(Repository.EnterRowsCountMessage, 5, 50);
             int colums = userComunicator.GetInputValueRanged(Repository.EnterCollumsCountMessage, 5, 50);
-
-            GameFieldData.iterationCount = 1;
+            
             gameFieldData = new GameFieldData(rows, colums);
             AdvanceExistingGame();
         }
 
         /// <summary>
-        /// Since rendering array increases iteration counter,
-        /// GameFieldData is set to decrement. Based on key Press executes
-        /// either:
+        /// Renders GameFieldArray
+        /// Based on key Press executes
         /// 1.Save; 2.Load 3.Quit comands. Quits to main menu.
         /// </summary>
         public void AdvanceExistingGame()
@@ -73,7 +72,7 @@
             while (isGameOn)
             {
                 bool isLoaded = false;
-
+                GameFieldData.iterationCount++;
                 renderer.PrintArray(gameFieldData.gameFieldArray);
                 Thread.Sleep(1000);
                 ConsoleKey key = userComunicator.KeyPressed();

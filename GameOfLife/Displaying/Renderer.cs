@@ -16,14 +16,13 @@ namespace GameOfLife
             UserComunicator userComunicator = new UserComunicator();
             Console.SetCursorPosition(0, 0);
             userComunicator.PrintHeaderMessage(String.Format(Repository.LiveCellCountMessage, GameFieldData.AliveCellsInCurrentIteration(gameField)));
-            userComunicator.PrintHeaderMessage(String.Format(Repository.IteratorMessage, GameFieldData.IterationCounter()));
+            userComunicator.PrintHeaderMessage(String.Format(Repository.IteratorMessage, GameFieldData.iterationCount));
 
             for (int i = 0; i < gameField.GetLength(0); i++)
             {
                 for (int j = 0; j < gameField.GetLength(1); j++)
                 {
                     Console.Write(gameField[i, j] == 0 ? "." : "X");
-
                 }
                 Console.WriteLine("");
             }
