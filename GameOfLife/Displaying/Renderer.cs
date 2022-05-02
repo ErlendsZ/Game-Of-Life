@@ -8,7 +8,7 @@ namespace GameOfLife
     {
         /// <summary>
         /// Renders GameField array
-        /// and related message to it every iteration
+        /// and related messages to it every iteration. (LiveCell count, iteration count, quit game)
         /// </summary>
         /// <param name="gameField">current generation of game array array</param>
         public void PrintArray(int[,] gameField)
