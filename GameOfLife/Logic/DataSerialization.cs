@@ -14,6 +14,7 @@ namespace GameOfLife
         /// <param name="filePath">relative location of seriliazation file</param>
         public T? BinarySerialize<T>(T savedData, string filePath)
         {
+
             if (File.Exists(filePath))
             {
                 File.Delete(filePath);
@@ -22,9 +23,11 @@ namespace GameOfLife
             FileStream fileStream;
             BinaryFormatter formatter = new BinaryFormatter();
 
-            fileStream = File.Create(filePath);
-            formatter.Serialize(fileStream, savedData);
-            fileStream.Close();
+            using (fileStream = File.Create(filePath))
+            {
+                formatter.Serialize(fileStream, savedData);
+                fileStream.Close();
+            }
             return savedData;
         }
 
@@ -41,10 +44,12 @@ namespace GameOfLife
                 FileStream fileStream;
                 BinaryFormatter formatter = new BinaryFormatter();
 
-                fileStream = File.OpenRead(filePath);
-                var savedData = (T)formatter.Deserialize(fileStream);
-                fileStream.Close();
-                return savedData;
+                using (fileStream = File.OpenRead(filePath))
+                {
+                    var savedData = (T)formatter.Deserialize(fileStream);
+                    fileStream.Close();
+                    return savedData;
+                }
             }
 
             return default;
