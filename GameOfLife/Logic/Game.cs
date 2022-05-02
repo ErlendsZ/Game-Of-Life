@@ -33,32 +33,24 @@
         }
 
         /// <summary>
-        /// Creates new game. Sets every time iteration = 1
+        /// Creates new game. Sets every time starting iteration = 1
         /// so that, when:
         /// 1.starting new game;
         /// 2.continuing game
         /// 3.starting new game.
         /// Iteration count would not continue to increase but also resets to 1
-        /// Calls constructor for user input and gamearray initialization
+        /// Calls constructor to initialize an array with dimesion values
+        /// and populator choice got from user input .
         /// </summary>
         public void ExecuteNewGame()
         {
             GameFieldData.iterationCount = 1;
             int rows = userComunicator.GetInputValueRanged(Repository.EnterRowsCountMessage, 5, 50);
             int colums = userComunicator.GetInputValueRanged(Repository.EnterCollumsCountMessage, 5, 50);
+            int populatorChoice = userComunicator.GetInputValueRanged(Repository.ChoseCellPopulatorMessage, 1, 2);
 
-            gameFieldData = new GameFieldData(rows, colums);
-
-            switch (userComunicator.GetInputValueRanged(Repository.ChoseCellPopulatorMessage, 1, 2))
-            {
-                case 1:
-                    CellPopulator.RandomizeCells(gameFieldData.gameFieldArray);
-                    break;
-                case 2:
-                    CellPopulator.GliderCreation(gameFieldData.gameFieldArray);
-                    break;
-            }
-
+            gameFieldData = new GameFieldData(rows, colums, populatorChoice);
+     
             AdvanceExistingGame();
         }
 

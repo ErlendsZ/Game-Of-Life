@@ -1,7 +1,7 @@
 ﻿namespace GameOfLife
 {
     /// <summary>
-    /// Contains data of array dimensions and data about 
+    /// Contains data of array dimensions, populator choice and data about 
     /// next generation results based on previous. Also contains data of  live 
     /// cell count in current iterations and iteration numbering.
     /// </summary>
@@ -13,12 +13,18 @@
         public int[,]? gameFieldArray;
         public static int iterationCount = 0;
         
-        public GameFieldData(int rows, int colums)
+        public GameFieldData(int rows, int colums, int choice)
         {
-           
             gameFieldArray = new int[rows, colums];
-           
-           
+            switch (choice)
+            {
+                case 1:
+                    CellPopulator.RandomizeCells(gameFieldArray);
+                    break;
+                case 2:
+                    CellPopulator.GliderCreation(gameFieldArray);
+                    break;
+            }
         }
 
         /// <summary>
