@@ -26,7 +26,6 @@ namespace GameOfLife
             using (fileStream = File.Create(filePath))
             {
                 formatter.Serialize(fileStream, savedData);
-                fileStream.Close();
             }
             return savedData;
         }
@@ -47,7 +46,6 @@ namespace GameOfLife
                 using (fileStream = File.OpenRead(filePath))
                 {
                     var savedData = (T)formatter.Deserialize(fileStream);
-                    fileStream.Close();
                     return savedData;
                 }
             }
